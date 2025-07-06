@@ -31,9 +31,9 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="hudPanel" max="32767" attributes="0"/>
-                  <Component id="jPanel1" max="32767" attributes="0"/>
+                  <Component id="assemblyPanel" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="beltPanel" min="-2" max="-2" attributes="0"/>
+                      <Component id="conveyorBeltPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="garbagePanel" max="32767" attributes="0"/>
                   </Group>
@@ -48,10 +48,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="hudPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <Component id="assemblyPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="beltPanel" max="32767" attributes="0"/>
+                  <Component id="conveyorBeltPanel" max="32767" attributes="0"/>
                   <Component id="garbagePanel" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -75,7 +75,7 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="assemblyPanel">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -90,7 +90,7 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Container class="javax.swing.JPanel" name="beltPanel">
+    <Container class="javax.swing.JPanel" name="conveyorBeltPanel">
 
       <Layout>
         <DimensionLayout dim="0">
