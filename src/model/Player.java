@@ -2,14 +2,21 @@ package model;
 
 public class Player {
 
+    private String name;
+    private String position;
     private int currentFactory;
     private int money;
     private Factory factory;
 
     public Player() {
+    }
+
+    public Player(String name) {
+        this.name = name;
         this.currentFactory = 1;
         this.money = 0;
         this.factory = new Factory(currentFactory);
+        this.position = "";
     }
 
     public int getCurrentFactory() {
@@ -18,6 +25,33 @@ public class Player {
 
     public int getMoney() {
         return money;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPosition() {
+        switch (getCurrentFactory()) {
+            case 1:
+                position = "Gerente Regional";
+                break;
+            case 2:
+                position = "Gerente Producción";
+                break;
+            case 3:
+                position = "Gerente General";
+                break;
+        }
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public void addMoney(int amount) {
