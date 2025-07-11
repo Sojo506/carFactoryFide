@@ -34,11 +34,6 @@ public class MainView extends javax.swing.JFrame {
         positionLabel = new javax.swing.JLabel();
         moneyLabel = new javax.swing.JLabel();
         goalLabel = new javax.swing.JLabel();
-        orderPanel2 = new javax.swing.JPanel();
-        rejectBtn2 = new javax.swing.JButton();
-        acceptBtn2 = new javax.swing.JButton();
-        orderTitle2 = new javax.swing.JLabel();
-        orderProgress2 = new javax.swing.JLabel();
         orderPanel3 = new javax.swing.JPanel();
         rejectBtn3 = new javax.swing.JButton();
         acceptBtn3 = new javax.swing.JButton();
@@ -49,22 +44,47 @@ public class MainView extends javax.swing.JFrame {
         acceptBtn4 = new javax.swing.JButton();
         orderTitle4 = new javax.swing.JLabel();
         orderProgress4 = new javax.swing.JLabel();
-        orderPanel = new javax.swing.JPanel();
-        rejectBtn = new javax.swing.JButton();
-        acceptBtn = new javax.swing.JButton();
-        orderTitle = new javax.swing.JLabel();
-        orderProgress = new javax.swing.JLabel();
+        orderPanel5 = new javax.swing.JPanel();
+        rejectBtn5 = new javax.swing.JButton();
+        acceptBtn5 = new javax.swing.JButton();
+        orderTitle5 = new javax.swing.JLabel();
+        orderProgress5 = new javax.swing.JLabel();
+        orderPanel2 = new javax.swing.JPanel();
+        rejectBtn2 = new javax.swing.JButton();
+        acceptBtn2 = new javax.swing.JButton();
+        orderTitle2 = new javax.swing.JLabel();
+        orderProgress2 = new javax.swing.JLabel();
         orderPanel1 = new javax.swing.JPanel();
         rejectBtn1 = new javax.swing.JButton();
         acceptBtn1 = new javax.swing.JButton();
         orderTitle1 = new javax.swing.JLabel();
         orderProgress1 = new javax.swing.JLabel();
+        assemblyPanel = new javax.swing.JPanel();
+        assemblyLinePanel2 = new javax.swing.JPanel();
+        assemblyTitle2 = new javax.swing.JLabel();
+        assemblyBtn2 = new javax.swing.JButton();
+        assemblySubTitle2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        assemblyList2 = new javax.swing.JList<>();
+        assemblyLinePanel3 = new javax.swing.JPanel();
+        assemblyTitle3 = new javax.swing.JLabel();
+        assemblyBtn3 = new javax.swing.JButton();
+        assemblySubTitle3 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        assemblyList3 = new javax.swing.JList<>();
+        assemblyLinePanel1 = new javax.swing.JPanel();
+        assemblyBtn1 = new javax.swing.JButton();
+        assemblyTitle1 = new javax.swing.JLabel();
+        assemblySubTitle1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        assemblyList1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         contentPanel.setBackground(new java.awt.Color(47, 47, 47));
 
         hudPanel.setBackground(new java.awt.Color(28, 40, 51));
+        hudPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         factoryLabel.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -74,60 +94,6 @@ public class MainView extends javax.swing.JFrame {
 
         goalLabel.setForeground(new java.awt.Color(255, 255, 255));
         goalLabel.setText(" ");
-
-        orderPanel2.setBackground(new java.awt.Color(224, 224, 224));
-
-        rejectBtn2.setBackground(new java.awt.Color(235, 87, 87));
-        rejectBtn2.setForeground(new java.awt.Color(0, 0, 0));
-        rejectBtn2.setText("Rechazar");
-        rejectBtn2.setBorderPainted(false);
-        rejectBtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        rejectBtn2.setFocusPainted(false);
-        rejectBtn2.setFocusable(false);
-
-        acceptBtn2.setBackground(new java.awt.Color(111, 207, 151));
-        acceptBtn2.setForeground(new java.awt.Color(0, 0, 0));
-        acceptBtn2.setText("Aceptar");
-        acceptBtn2.setBorderPainted(false);
-        acceptBtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        acceptBtn2.setFocusPainted(false);
-        acceptBtn2.setFocusable(false);
-
-        orderTitle2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        orderTitle2.setText("Sedan de lujo");
-        orderTitle2.setFocusable(false);
-        orderTitle2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        orderProgress2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        orderProgress2.setText("En progreso");
-        orderProgress2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        javax.swing.GroupLayout orderPanel2Layout = new javax.swing.GroupLayout(orderPanel2);
-        orderPanel2.setLayout(orderPanel2Layout);
-        orderPanel2Layout.setHorizontalGroup(
-            orderPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(orderPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(orderPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(acceptBtn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(rejectBtn2, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                    .addComponent(orderTitle2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(orderProgress2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        orderPanel2Layout.setVerticalGroup(
-            orderPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, orderPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(orderTitle2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(orderProgress2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rejectBtn2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(acceptBtn2)
-                .addContainerGap())
-        );
 
         orderPanel3.setBackground(new java.awt.Color(224, 224, 224));
 
@@ -237,57 +203,111 @@ public class MainView extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        orderPanel.setBackground(new java.awt.Color(224, 224, 224));
+        orderPanel5.setBackground(new java.awt.Color(224, 224, 224));
 
-        rejectBtn.setBackground(new java.awt.Color(235, 87, 87));
-        rejectBtn.setForeground(new java.awt.Color(0, 0, 0));
-        rejectBtn.setText("Rechazar");
-        rejectBtn.setBorderPainted(false);
-        rejectBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        rejectBtn.setFocusPainted(false);
-        rejectBtn.setFocusable(false);
+        rejectBtn5.setBackground(new java.awt.Color(235, 87, 87));
+        rejectBtn5.setForeground(new java.awt.Color(0, 0, 0));
+        rejectBtn5.setText("Rechazar");
+        rejectBtn5.setBorderPainted(false);
+        rejectBtn5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rejectBtn5.setFocusPainted(false);
+        rejectBtn5.setFocusable(false);
 
-        acceptBtn.setBackground(new java.awt.Color(111, 207, 151));
-        acceptBtn.setForeground(new java.awt.Color(0, 0, 0));
-        acceptBtn.setText("Aceptar");
-        acceptBtn.setBorderPainted(false);
-        acceptBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        acceptBtn.setFocusPainted(false);
-        acceptBtn.setFocusable(false);
+        acceptBtn5.setBackground(new java.awt.Color(111, 207, 151));
+        acceptBtn5.setForeground(new java.awt.Color(0, 0, 0));
+        acceptBtn5.setText("Aceptar");
+        acceptBtn5.setBorderPainted(false);
+        acceptBtn5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        acceptBtn5.setFocusPainted(false);
+        acceptBtn5.setFocusable(false);
 
-        orderTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        orderTitle.setText("Sedan de lujo");
-        orderTitle.setFocusable(false);
-        orderTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        orderTitle5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        orderTitle5.setText("Sedan de lujo");
+        orderTitle5.setFocusable(false);
+        orderTitle5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        orderProgress.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        orderProgress.setText("En progreso");
-        orderProgress.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        orderProgress5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        orderProgress5.setText("En progreso");
+        orderProgress5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        javax.swing.GroupLayout orderPanelLayout = new javax.swing.GroupLayout(orderPanel);
-        orderPanel.setLayout(orderPanelLayout);
-        orderPanelLayout.setHorizontalGroup(
-            orderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(orderPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout orderPanel5Layout = new javax.swing.GroupLayout(orderPanel5);
+        orderPanel5.setLayout(orderPanel5Layout);
+        orderPanel5Layout.setHorizontalGroup(
+            orderPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(orderPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(orderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(acceptBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(rejectBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                    .addComponent(orderTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(orderProgress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(orderPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(acceptBtn5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rejectBtn5, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                    .addComponent(orderTitle5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(orderProgress5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        orderPanelLayout.setVerticalGroup(
-            orderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, orderPanelLayout.createSequentialGroup()
+        orderPanel5Layout.setVerticalGroup(
+            orderPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, orderPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(orderTitle)
+                .addComponent(orderTitle5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(orderProgress)
+                .addComponent(orderProgress5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rejectBtn)
+                .addComponent(rejectBtn5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(acceptBtn)
+                .addComponent(acceptBtn5)
+                .addContainerGap())
+        );
+
+        orderPanel2.setBackground(new java.awt.Color(224, 224, 224));
+
+        rejectBtn2.setBackground(new java.awt.Color(235, 87, 87));
+        rejectBtn2.setForeground(new java.awt.Color(0, 0, 0));
+        rejectBtn2.setText("Rechazar");
+        rejectBtn2.setBorderPainted(false);
+        rejectBtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rejectBtn2.setFocusPainted(false);
+        rejectBtn2.setFocusable(false);
+
+        acceptBtn2.setBackground(new java.awt.Color(111, 207, 151));
+        acceptBtn2.setForeground(new java.awt.Color(0, 0, 0));
+        acceptBtn2.setText("Aceptar");
+        acceptBtn2.setBorderPainted(false);
+        acceptBtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        acceptBtn2.setFocusPainted(false);
+        acceptBtn2.setFocusable(false);
+
+        orderTitle2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        orderTitle2.setText("Sedan de lujo");
+        orderTitle2.setFocusable(false);
+        orderTitle2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        orderProgress2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        orderProgress2.setText("En progreso");
+        orderProgress2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout orderPanel2Layout = new javax.swing.GroupLayout(orderPanel2);
+        orderPanel2.setLayout(orderPanel2Layout);
+        orderPanel2Layout.setHorizontalGroup(
+            orderPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(orderPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(orderPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(acceptBtn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rejectBtn2, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                    .addComponent(orderTitle2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(orderProgress2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        orderPanel2Layout.setVerticalGroup(
+            orderPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, orderPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(orderTitle2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(orderProgress2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rejectBtn2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(acceptBtn2)
                 .addContainerGap())
         );
 
@@ -356,16 +376,16 @@ public class MainView extends javax.swing.JFrame {
                     .addComponent(positionLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(factoryLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(goalLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 258, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(orderPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
-                .addComponent(orderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(orderPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(orderPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(orderPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(orderPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         hudPanelLayout.setVerticalGroup(
@@ -373,9 +393,9 @@ public class MainView extends javax.swing.JFrame {
             .addGroup(hudPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(hudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(orderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(orderPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(orderPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(orderPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(orderPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(orderPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(hudPanelLayout.createSequentialGroup()
                         .addComponent(factoryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -385,8 +405,220 @@ public class MainView extends javax.swing.JFrame {
                         .addGap(22, 22, 22)
                         .addComponent(goalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 6, Short.MAX_VALUE))
-                    .addComponent(orderPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(orderPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(orderPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        assemblyPanel.setBackground(new java.awt.Color(59, 59, 59));
+        assemblyPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        assemblyLinePanel2.setBackground(new java.awt.Color(90, 90, 90));
+
+        assemblyTitle2.setFont(new java.awt.Font("Adwaita Sans", 1, 16)); // NOI18N
+        assemblyTitle2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        assemblyTitle2.setText("SEDAN");
+
+        assemblyBtn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addpart.png"))); // NOI18N
+        assemblyBtn2.setBorderPainted(false);
+        assemblyBtn2.setContentAreaFilled(false);
+        assemblyBtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        assemblyBtn2.setEnabled(false);
+        assemblyBtn2.setFocusPainted(false);
+        assemblyBtn2.setFocusable(false);
+
+        assemblySubTitle2.setFont(new java.awt.Font("Adwaita Sans", 1, 15)); // NOI18N
+        assemblySubTitle2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        assemblySubTitle2.setText("Partes");
+
+        assemblyList2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Motor", "Carrocería", "Llantas" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(assemblyList2);
+
+        javax.swing.GroupLayout assemblyLinePanel2Layout = new javax.swing.GroupLayout(assemblyLinePanel2);
+        assemblyLinePanel2.setLayout(assemblyLinePanel2Layout);
+        assemblyLinePanel2Layout.setHorizontalGroup(
+            assemblyLinePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(assemblyLinePanel2Layout.createSequentialGroup()
+                .addGroup(assemblyLinePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, assemblyLinePanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(assemblySubTitle2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(assemblyLinePanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(assemblyTitle2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, assemblyLinePanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(assemblyBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(93, 93, 93))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, assemblyLinePanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
+        );
+        assemblyLinePanel2Layout.setVerticalGroup(
+            assemblyLinePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(assemblyLinePanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(assemblyTitle2)
+                .addGap(30, 30, 30)
+                .addComponent(assemblyBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(assemblySubTitle2)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        assemblyLinePanel3.setBackground(new java.awt.Color(90, 90, 90));
+
+        assemblyTitle3.setFont(new java.awt.Font("Adwaita Sans", 1, 16)); // NOI18N
+        assemblyTitle3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        assemblyTitle3.setText("SEDAN");
+
+        assemblyBtn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addpart.png"))); // NOI18N
+        assemblyBtn3.setBorderPainted(false);
+        assemblyBtn3.setContentAreaFilled(false);
+        assemblyBtn3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        assemblyBtn3.setFocusPainted(false);
+        assemblyBtn3.setFocusable(false);
+
+        assemblySubTitle3.setFont(new java.awt.Font("Adwaita Sans", 1, 15)); // NOI18N
+        assemblySubTitle3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        assemblySubTitle3.setText("Partes");
+
+        assemblyList3.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Motor", "Carrocería", "Llantas" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(assemblyList3);
+
+        javax.swing.GroupLayout assemblyLinePanel3Layout = new javax.swing.GroupLayout(assemblyLinePanel3);
+        assemblyLinePanel3.setLayout(assemblyLinePanel3Layout);
+        assemblyLinePanel3Layout.setHorizontalGroup(
+            assemblyLinePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(assemblyLinePanel3Layout.createSequentialGroup()
+                .addGroup(assemblyLinePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, assemblyLinePanel3Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(assemblySubTitle3, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(assemblyLinePanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(assemblyTitle3, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, assemblyLinePanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(assemblyBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(93, 93, 93))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, assemblyLinePanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+        );
+        assemblyLinePanel3Layout.setVerticalGroup(
+            assemblyLinePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(assemblyLinePanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(assemblyTitle3)
+                .addGap(30, 30, 30)
+                .addComponent(assemblyBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(assemblySubTitle3)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        assemblyLinePanel1.setBackground(new java.awt.Color(90, 90, 90));
+
+        assemblyBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addpart.png"))); // NOI18N
+        assemblyBtn1.setBorderPainted(false);
+        assemblyBtn1.setContentAreaFilled(false);
+        assemblyBtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        assemblyBtn1.setEnabled(false);
+        assemblyBtn1.setFocusPainted(false);
+        assemblyBtn1.setFocusable(false);
+
+        assemblyTitle1.setFont(new java.awt.Font("Adwaita Sans", 1, 16)); // NOI18N
+        assemblyTitle1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        assemblyTitle1.setText("SEDAN");
+
+        assemblySubTitle1.setFont(new java.awt.Font("Adwaita Sans", 1, 15)); // NOI18N
+        assemblySubTitle1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        assemblySubTitle1.setText("Partes");
+
+        assemblyList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Motor", "Carrocería", "Llantas" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(assemblyList1);
+
+        javax.swing.GroupLayout assemblyLinePanel1Layout = new javax.swing.GroupLayout(assemblyLinePanel1);
+        assemblyLinePanel1.setLayout(assemblyLinePanel1Layout);
+        assemblyLinePanel1Layout.setHorizontalGroup(
+            assemblyLinePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(assemblyLinePanel1Layout.createSequentialGroup()
+                .addGroup(assemblyLinePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, assemblyLinePanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(assemblySubTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(assemblyLinePanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(assemblyTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, assemblyLinePanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(assemblyBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(93, 93, 93))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, assemblyLinePanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+        );
+        assemblyLinePanel1Layout.setVerticalGroup(
+            assemblyLinePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(assemblyLinePanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(assemblyTitle1)
+                .addGap(30, 30, 30)
+                .addComponent(assemblyBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(assemblySubTitle1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout assemblyPanelLayout = new javax.swing.GroupLayout(assemblyPanel);
+        assemblyPanel.setLayout(assemblyPanelLayout);
+        assemblyPanelLayout.setHorizontalGroup(
+            assemblyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(assemblyPanelLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(assemblyLinePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
+                .addComponent(assemblyLinePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addComponent(assemblyLinePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
+        );
+        assemblyPanelLayout.setVerticalGroup(
+            assemblyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, assemblyPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(assemblyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(assemblyLinePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(assemblyLinePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(assemblyLinePanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -396,7 +628,9 @@ public class MainView extends javax.swing.JFrame {
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contentPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(hudPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(assemblyPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(hudPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         contentPanelLayout.setVerticalGroup(
@@ -404,7 +638,9 @@ public class MainView extends javax.swing.JFrame {
             .addGroup(contentPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(hudPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(538, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(assemblyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -423,36 +659,55 @@ public class MainView extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton acceptBtn;
     private javax.swing.JButton acceptBtn1;
     private javax.swing.JButton acceptBtn2;
     private javax.swing.JButton acceptBtn3;
     private javax.swing.JButton acceptBtn4;
+    private javax.swing.JButton acceptBtn5;
+    private javax.swing.JButton assemblyBtn1;
+    private javax.swing.JButton assemblyBtn2;
+    private javax.swing.JButton assemblyBtn3;
+    private javax.swing.JPanel assemblyLinePanel1;
+    private javax.swing.JPanel assemblyLinePanel2;
+    private javax.swing.JPanel assemblyLinePanel3;
+    private javax.swing.JList<String> assemblyList1;
+    private javax.swing.JList<String> assemblyList2;
+    private javax.swing.JList<String> assemblyList3;
+    private javax.swing.JPanel assemblyPanel;
+    private javax.swing.JLabel assemblySubTitle1;
+    private javax.swing.JLabel assemblySubTitle2;
+    private javax.swing.JLabel assemblySubTitle3;
+    private javax.swing.JLabel assemblyTitle1;
+    private javax.swing.JLabel assemblyTitle2;
+    private javax.swing.JLabel assemblyTitle3;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JLabel factoryLabel;
     private javax.swing.JLabel goalLabel;
     private javax.swing.JPanel hudPanel;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel moneyLabel;
-    private javax.swing.JPanel orderPanel;
     private javax.swing.JPanel orderPanel1;
     private javax.swing.JPanel orderPanel2;
     private javax.swing.JPanel orderPanel3;
     private javax.swing.JPanel orderPanel4;
-    private javax.swing.JLabel orderProgress;
+    private javax.swing.JPanel orderPanel5;
     private javax.swing.JLabel orderProgress1;
     private javax.swing.JLabel orderProgress2;
     private javax.swing.JLabel orderProgress3;
     private javax.swing.JLabel orderProgress4;
-    private javax.swing.JLabel orderTitle;
+    private javax.swing.JLabel orderProgress5;
     private javax.swing.JLabel orderTitle1;
     private javax.swing.JLabel orderTitle2;
     private javax.swing.JLabel orderTitle3;
     private javax.swing.JLabel orderTitle4;
+    private javax.swing.JLabel orderTitle5;
     private javax.swing.JLabel positionLabel;
-    private javax.swing.JButton rejectBtn;
     private javax.swing.JButton rejectBtn1;
     private javax.swing.JButton rejectBtn2;
     private javax.swing.JButton rejectBtn3;
     private javax.swing.JButton rejectBtn4;
+    private javax.swing.JButton rejectBtn5;
     // End of variables declaration//GEN-END:variables
 }
