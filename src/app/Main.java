@@ -1,8 +1,8 @@
 package app;
 
-import view.MainView;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
+import view.StartGameView;
 
 public class Main {
 
@@ -19,7 +19,7 @@ public class Main {
         }
 
         java.awt.EventQueue.invokeLater(() -> {
-            new MainView().setVisible(true);
+            new StartGameView().setVisible(true);
         });
     }
 }
