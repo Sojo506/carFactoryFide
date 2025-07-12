@@ -8,11 +8,13 @@ import view.panel.HudPanel;
 
 public class MainView extends javax.swing.JFrame {
 
+    private StartGameView start;
     private Player player;
     private int xMouse;
     private int yMouse;
 
-    public MainView(Player player) {
+    public MainView(StartGameView start, Player player) {
+        this.start = start;
         this.player = player;
         setUndecorated(true);
         initComponents();
@@ -53,6 +55,7 @@ public class MainView extends javax.swing.JFrame {
         conveyorBeltPanel = new javax.swing.JPanel();
         dragBtn = new javax.swing.JButton();
         resetBtn = new javax.swing.JButton();
+        stopPlayBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -143,6 +146,18 @@ public class MainView extends javax.swing.JFrame {
             }
         });
 
+        stopPlayBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pausestop.png"))); // NOI18N
+        stopPlayBtn.setBorderPainted(false);
+        stopPlayBtn.setContentAreaFilled(false);
+        stopPlayBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        stopPlayBtn.setFocusPainted(false);
+        stopPlayBtn.setFocusable(false);
+        stopPlayBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stopPlayBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
         contentPanel.setLayout(contentPanelLayout);
         contentPanelLayout.setHorizontalGroup(
@@ -160,6 +175,8 @@ public class MainView extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentPanelLayout.createSequentialGroup()
                         .addComponent(dragBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(stopPlayBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(438, 438, 438)
                         .addComponent(resetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -172,7 +189,8 @@ public class MainView extends javax.swing.JFrame {
                 .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(dragBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(resetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(resetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stopPlayBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(hudPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -217,6 +235,10 @@ public class MainView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_resetBtnActionPerformed
 
+    private void stopPlayBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopPlayBtnActionPerformed
+        start.toggleMusicPlayback();
+    }//GEN-LAST:event_stopPlayBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel assemblyPanel;
@@ -226,6 +248,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JButton exitBtn;
     private javax.swing.JPanel hudPanel;
     private javax.swing.JButton resetBtn;
+    private javax.swing.JButton stopPlayBtn;
     private javax.swing.JButton trashCanBtn;
     // End of variables declaration//GEN-END:variables
 }
