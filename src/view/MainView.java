@@ -7,12 +7,12 @@ import view.panel.ConveyorBeltPanel;
 import view.panel.HudPanel;
 
 public class MainView extends javax.swing.JFrame {
-
+    
     private StartGameView start;
     private Player player;
     private int xMouse;
     private int yMouse;
-
+    
     public MainView(StartGameView start, Player player) {
         this.start = start;
         this.player = player;
@@ -23,26 +23,26 @@ public class MainView extends javax.swing.JFrame {
         //setSize(1000, 700);
 
         initPanels();
-
+        
     }
-
+    
     private void initPanels() {
         hudPanel.setLayout(new BorderLayout());
         hudPanel.add(new HudPanel(player), BorderLayout.CENTER);
         hudPanel.revalidate();
         hudPanel.repaint();
-
+        
         assemblyPanel.setLayout(new BorderLayout());
         assemblyPanel.add(new AssemblyPanel(), BorderLayout.CENTER);
         assemblyPanel.revalidate();
         assemblyPanel.repaint();
-
+        
         conveyorBeltPanel.setLayout(new BorderLayout());
         conveyorBeltPanel.add(new ConveyorBeltPanel(), BorderLayout.CENTER);
         conveyorBeltPanel.revalidate();
         conveyorBeltPanel.repaint();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -256,7 +256,8 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_stopPlayBtnActionPerformed
 
     private void stopPlayBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopPlayBtn1ActionPerformed
-        
+        InfoDialog info = new InfoDialog(this, true);
+        info.setVisible(true);
     }//GEN-LAST:event_stopPlayBtn1ActionPerformed
 
 
