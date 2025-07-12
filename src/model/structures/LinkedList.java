@@ -11,7 +11,7 @@ public class LinkedList<T> {
     private int size;
 
     public void add(T data) {
-        if (!(data instanceof Material) && !(data instanceof Car) && !(data instanceof Order)) {
+        if (!(data instanceof Material) && !(data instanceof Car) && !(data instanceof Order) && !(data instanceof Boolean)) {
             throw new IllegalArgumentException("Objeto no permitido");
         }
 
@@ -39,6 +39,30 @@ public class LinkedList<T> {
         }
 
         return current.getData();
+    }
+
+    public void setElement(int index, T data) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Índice fuera de rango");
+        }
+        Node<T> current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.getNext();
+        }
+        current.setData(data);
+    }
+
+    public int indexOf(T data) {
+        Node<T> current = head;
+        int index = 0;
+        while (current != null) {
+            if ((data == null && current.getData() == null) || (data != null && data.equals(current.getData()))) {
+                return index;
+            }
+            current = current.getNext();
+            index++;
+        }
+        return -1;
     }
 
     public T getRandomElement() {
