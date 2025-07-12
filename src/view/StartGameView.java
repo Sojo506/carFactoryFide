@@ -54,7 +54,7 @@ public class StartGameView extends javax.swing.JFrame {
     public void toggleMusicPlayback() {
         if (backgroundMusicClip == null) {
             // Si la música no se ha cargado aún, intenta reproducirla
-            playBackgroundMusic("/resources/nombre_de_tu_archivo.wav"); // Asegúrate de usar la ruta correcta
+            playBackgroundMusic("../music/gamecarmusic.Wav");
             return;
         }
 
@@ -62,13 +62,11 @@ public class StartGameView extends javax.swing.JFrame {
             // Si la música está sonando, la pausamos y guardamos la posición
             clipTimePosition = backgroundMusicClip.getMicrosecondPosition();
             backgroundMusicClip.stop();
-            System.out.println("Música pausada.");
         } else {
             // Si la música está pausada o detenida, la reanudamos
             backgroundMusicClip.setMicrosecondPosition(clipTimePosition); // Vuelve a la posición guardada
             backgroundMusicClip.start(); // Inicia la reproducción
             backgroundMusicClip.loop(Clip.LOOP_CONTINUOUSLY); // Asegura que siga en bucle
-            System.out.println("Música reanudada.");
         }
     }
 
@@ -186,7 +184,7 @@ public class StartGameView extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(this, "Have fun " + name + "!", "bro...!", JOptionPane.PLAIN_MESSAGE);
         this.dispose();
-        java.awt.EventQueue.invokeLater(() -> new MainView(new Player(name)).setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new MainView(this, new Player(name)).setVisible(true));
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
