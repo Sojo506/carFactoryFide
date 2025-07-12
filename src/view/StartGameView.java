@@ -42,12 +42,11 @@ public class StartGameView extends javax.swing.JFrame {
                     backgroundMusicClip.open(audioInput);
                     backgroundMusicClip.loop(Clip.LOOP_CONTINUOUSLY); // Para que se repita infinitamente
                 } else {
-                    System.err.println("Error: Archivo de música no encontrado en el classpath: " + filePath);
+                    JOptionPane.showMessageDialog(this, "Pathfile not found", "Error", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace(); // Imprime cualquier error que ocurra
-            System.err.println("Error al reproducir la música: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
