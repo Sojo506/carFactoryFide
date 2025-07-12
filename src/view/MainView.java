@@ -119,7 +119,7 @@ public class MainView extends javax.swing.JFrame {
 
         dragBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/drag.png"))); // NOI18N
         dragBtn.setContentAreaFilled(false);
-        dragBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        dragBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
         dragBtn.setFocusPainted(false);
         dragBtn.setFocusable(false);
         dragBtn.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
