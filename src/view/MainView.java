@@ -12,8 +12,8 @@ public class MainView extends javax.swing.JFrame {
     private int xMouse;
     private int yMouse;
 
-    public MainView() {
-        player = new Player("Rick Sánchez");
+    public MainView(Player player) {
+        this.player = player;
         setUndecorated(true);
         initComponents();
         setResizable(false);
@@ -34,7 +34,7 @@ public class MainView extends javax.swing.JFrame {
         assemblyPanel.add(new AssemblyPanel(), BorderLayout.CENTER);
         assemblyPanel.revalidate();
         assemblyPanel.repaint();
-        
+
         conveyorBeltPanel.setLayout(new BorderLayout());
         conveyorBeltPanel.add(new ConveyorBeltPanel(), BorderLayout.CENTER);
         conveyorBeltPanel.revalidate();
