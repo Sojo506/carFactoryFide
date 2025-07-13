@@ -74,43 +74,48 @@ public class StartGameView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        nameLabel = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        icon = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
+        nameTextField = new javax.swing.JTextField();
+        subTitle = new javax.swing.JLabel();
+        startBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(43, 45, 66));
 
-        jLabel1.setFont(new java.awt.Font("Adwaita Sans", 1, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/car.png"))); // NOI18N
+        icon.setFont(new java.awt.Font("Adwaita Sans", 1, 18)); // NOI18N
+        icon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/car.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Adwaita Sans", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 255, 255));
-        jLabel2.setText("Car Factory");
+        title.setFont(new java.awt.Font("Adwaita Sans", 1, 24)); // NOI18N
+        title.setForeground(new java.awt.Color(0, 255, 255));
+        title.setText("Car Factory");
 
-        nameLabel.setBackground(new java.awt.Color(255, 255, 255));
-        nameLabel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        jLabel3.setFont(new java.awt.Font("Adwaita Sans", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 0, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Start your journey by entering your name!");
-
-        jButton1.setBackground(new java.awt.Color(255, 215, 0));
-        jButton1.setFont(new java.awt.Font("Adwaita Sans", 1, 15)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("START");
-        jButton1.setBorderPainted(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setFocusPainted(false);
-        jButton1.setFocusable(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        nameTextField.setBackground(new java.awt.Color(255, 255, 255));
+        nameTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                nameTextFieldActionPerformed(evt);
+            }
+        });
+
+        subTitle.setFont(new java.awt.Font("Adwaita Sans", 0, 18)); // NOI18N
+        subTitle.setForeground(new java.awt.Color(255, 0, 255));
+        subTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        subTitle.setText("Start your journey by entering your name!");
+
+        startBtn.setBackground(new java.awt.Color(255, 215, 0));
+        startBtn.setFont(new java.awt.Font("Adwaita Sans", 1, 15)); // NOI18N
+        startBtn.setForeground(new java.awt.Color(0, 0, 0));
+        startBtn.setText("START");
+        startBtn.setBorderPainted(false);
+        startBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        startBtn.setFocusPainted(false);
+        startBtn.setFocusable(false);
+        startBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startBtnActionPerformed(evt);
             }
         });
 
@@ -121,36 +126,36 @@ public class StartGameView extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
-                    .addComponent(nameLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(subTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                    .addComponent(nameTextField, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(icon, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(122, 122, 122)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(startBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(127, 127, 127)
-                        .addComponent(jLabel2)))
+                        .addComponent(title)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(icon, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(title)
                 .addGap(36, 36, 36)
-                .addComponent(jLabel3)
+                .addComponent(subTitle)
                 .addGap(18, 18, 18)
-                .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(startBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -168,8 +173,8 @@ public class StartGameView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        var name = nameLabel.getText().trim();
+    private void startBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startBtnActionPerformed
+        var name = nameTextField.getText().trim();
 
         if (name.length() <= 0) {
             JOptionPane.showMessageDialog(this, "Your name cannot be empty!", "bro...?", JOptionPane.ERROR_MESSAGE);
@@ -184,15 +189,19 @@ public class StartGameView extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Have fun " + name + "!", "bro...!", JOptionPane.PLAIN_MESSAGE);
         this.dispose();
         java.awt.EventQueue.invokeLater(() -> new MainView(this, new Player(name)).setVisible(true));
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_startBtnActionPerformed
+
+    private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextFieldActionPerformed
+        startBtn.doClick();
+    }//GEN-LAST:event_nameTextFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel icon;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField nameLabel;
+    private javax.swing.JTextField nameTextField;
+    private javax.swing.JButton startBtn;
+    private javax.swing.JLabel subTitle;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }
