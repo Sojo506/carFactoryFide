@@ -11,9 +11,11 @@ public class LinkedList<T> {
     private int size;
 
     public void add(T data) {
+        /*
         if (data != null && !(data instanceof Material) && !(data instanceof Car) && !(data instanceof Order) && !(data instanceof Boolean)) {
             throw new IllegalArgumentException("Objeto no permitido");
         }
+         */
 
         Node<T> newNode = new Node<>(data);
         if (head == null) {
