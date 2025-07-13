@@ -1,18 +1,19 @@
 package view;
 
 import java.awt.BorderLayout;
+import javax.swing.JOptionPane;
 import model.Player;
 import view.panel.AssemblyPanel;
 import view.panel.ConveyorBeltPanel;
 import view.panel.HudPanel;
 
 public class MainView extends javax.swing.JFrame {
-    
+
     private StartGameView start;
     private Player player;
     private int xMouse;
     private int yMouse;
-    
+
     public MainView(StartGameView start, Player player) {
         this.start = start;
         this.player = player;
@@ -23,26 +24,26 @@ public class MainView extends javax.swing.JFrame {
         //setSize(1000, 700);
 
         initPanels();
-        
+
     }
-    
+
     private void initPanels() {
         hudPanel.setLayout(new BorderLayout());
         hudPanel.add(new HudPanel(player), BorderLayout.CENTER);
         hudPanel.revalidate();
         hudPanel.repaint();
-        
+
         assemblyPanel.setLayout(new BorderLayout());
         assemblyPanel.add(new AssemblyPanel(), BorderLayout.CENTER);
         assemblyPanel.revalidate();
         assemblyPanel.repaint();
-        
+
         conveyorBeltPanel.setLayout(new BorderLayout());
         conveyorBeltPanel.add(new ConveyorBeltPanel(), BorderLayout.CENTER);
         conveyorBeltPanel.revalidate();
         conveyorBeltPanel.repaint();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -248,7 +249,15 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_dragBtnMouseMoved
 
     private void resetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetBtnActionPerformed
-        // TODO add your handling code here:
+        int confirmacion = JOptionPane.showConfirmDialog(this, "Seguro que deseas reiniciar el juego", "Bro what?", JOptionPane.YES_NO_OPTION);
+
+        if (confirmacion == JOptionPane.YES_OPTION) {
+
+            java.awt.EventQueue.invokeLater(() -> {
+                new StartGameView().setVisible(true);
+            });
+            this.dispose();
+        }
     }//GEN-LAST:event_resetBtnActionPerformed
 
     private void stopPlayBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopPlayBtnActionPerformed
