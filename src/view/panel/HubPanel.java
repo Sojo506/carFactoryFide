@@ -2,11 +2,11 @@ package view.panel;
 
 import model.Player;
 
-public class HudPanel extends javax.swing.JPanel {
+public class HubPanel extends javax.swing.JPanel {
 
     Player player;
 
-    public HudPanel(Player player) {
+    public HubPanel(Player player) {
         this.player = player;
         initComponents();
         
