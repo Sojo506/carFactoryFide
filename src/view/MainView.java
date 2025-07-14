@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 import model.Player;
 import view.panel.AssemblyPanel;
 import view.panel.ConveyorBeltPanel;
-import view.panel.HudPanel;
+import view.panel.HubPanel;
 
 public class MainView extends javax.swing.JFrame {
 
@@ -28,20 +28,20 @@ public class MainView extends javax.swing.JFrame {
     }
 
     private void initPanels() {
-        hudPanel.setLayout(new BorderLayout());
-        hudPanel.add(new HudPanel(player), BorderLayout.CENTER);
-        hudPanel.revalidate();
-        hudPanel.repaint();
+        hubPanelMain.setLayout(new BorderLayout());
+        hubPanelMain.add(new HubPanel(player), BorderLayout.CENTER);
+        hubPanelMain.revalidate();
+        hubPanelMain.repaint();
 
-        assemblyPanel.setLayout(new BorderLayout());
-        assemblyPanel.add(new AssemblyPanel(), BorderLayout.CENTER);
-        assemblyPanel.revalidate();
-        assemblyPanel.repaint();
+        assemblyPanelMain.setLayout(new BorderLayout());
+        assemblyPanelMain.add(new AssemblyPanel(), BorderLayout.CENTER);
+        assemblyPanelMain.revalidate();
+        assemblyPanelMain.repaint();
 
-        conveyorBeltPanel.setLayout(new BorderLayout());
-        conveyorBeltPanel.add(new ConveyorBeltPanel(), BorderLayout.CENTER);
-        conveyorBeltPanel.revalidate();
-        conveyorBeltPanel.repaint();
+        conveyorBeltPanelMain.setLayout(new BorderLayout());
+        conveyorBeltPanelMain.add(new ConveyorBeltPanel(), BorderLayout.CENTER);
+        conveyorBeltPanelMain.revalidate();
+        conveyorBeltPanelMain.repaint();
     }
 
     @SuppressWarnings("unchecked")
@@ -49,11 +49,11 @@ public class MainView extends javax.swing.JFrame {
     private void initComponents() {
 
         contentPanel = new javax.swing.JPanel();
-        hudPanel = new javax.swing.JPanel();
-        assemblyPanel = new javax.swing.JPanel();
+        hubPanelMain = new javax.swing.JPanel();
+        assemblyPanelMain = new javax.swing.JPanel();
         trashCanBtn = new javax.swing.JButton();
         exitBtn = new javax.swing.JButton();
-        conveyorBeltPanel = new javax.swing.JPanel();
+        conveyorBeltPanelMain = new javax.swing.JPanel();
         dragBtn = new javax.swing.JButton();
         resetBtn = new javax.swing.JButton();
         stopPlayBtn = new javax.swing.JButton();
@@ -63,29 +63,29 @@ public class MainView extends javax.swing.JFrame {
 
         contentPanel.setBackground(new java.awt.Color(47, 47, 47));
 
-        hudPanel.setBackground(new java.awt.Color(28, 40, 51));
+        hubPanelMain.setBackground(new java.awt.Color(28, 40, 51));
 
-        javax.swing.GroupLayout hudPanelLayout = new javax.swing.GroupLayout(hudPanel);
-        hudPanel.setLayout(hudPanelLayout);
-        hudPanelLayout.setHorizontalGroup(
-            hudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout hubPanelMainLayout = new javax.swing.GroupLayout(hubPanelMain);
+        hubPanelMain.setLayout(hubPanelMainLayout);
+        hubPanelMainLayout.setHorizontalGroup(
+            hubPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        hudPanelLayout.setVerticalGroup(
-            hudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        hubPanelMainLayout.setVerticalGroup(
+            hubPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 156, Short.MAX_VALUE)
         );
 
-        assemblyPanel.setBackground(new java.awt.Color(59, 59, 59));
+        assemblyPanelMain.setBackground(new java.awt.Color(59, 59, 59));
 
-        javax.swing.GroupLayout assemblyPanelLayout = new javax.swing.GroupLayout(assemblyPanel);
-        assemblyPanel.setLayout(assemblyPanelLayout);
-        assemblyPanelLayout.setHorizontalGroup(
-            assemblyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout assemblyPanelMainLayout = new javax.swing.GroupLayout(assemblyPanelMain);
+        assemblyPanelMain.setLayout(assemblyPanelMainLayout);
+        assemblyPanelMainLayout.setHorizontalGroup(
+            assemblyPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        assemblyPanelLayout.setVerticalGroup(
-            assemblyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        assemblyPanelMainLayout.setVerticalGroup(
+            assemblyPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 305, Short.MAX_VALUE)
         );
 
@@ -109,16 +109,16 @@ public class MainView extends javax.swing.JFrame {
             }
         });
 
-        conveyorBeltPanel.setBackground(new java.awt.Color(59, 59, 59));
+        conveyorBeltPanelMain.setBackground(new java.awt.Color(59, 59, 59));
 
-        javax.swing.GroupLayout conveyorBeltPanelLayout = new javax.swing.GroupLayout(conveyorBeltPanel);
-        conveyorBeltPanel.setLayout(conveyorBeltPanelLayout);
-        conveyorBeltPanelLayout.setHorizontalGroup(
-            conveyorBeltPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout conveyorBeltPanelMainLayout = new javax.swing.GroupLayout(conveyorBeltPanelMain);
+        conveyorBeltPanelMain.setLayout(conveyorBeltPanelMainLayout);
+        conveyorBeltPanelMainLayout.setHorizontalGroup(
+            conveyorBeltPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 830, Short.MAX_VALUE)
         );
-        conveyorBeltPanelLayout.setVerticalGroup(
-            conveyorBeltPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        conveyorBeltPanelMainLayout.setVerticalGroup(
+            conveyorBeltPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 158, Short.MAX_VALUE)
         );
 
@@ -179,10 +179,10 @@ public class MainView extends javax.swing.JFrame {
             .addGroup(contentPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(assemblyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(hudPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(assemblyPanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(hubPanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addComponent(conveyorBeltPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(conveyorBeltPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(trashCanBtn)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -209,13 +209,13 @@ public class MainView extends javax.swing.JFrame {
                     .addComponent(stopPlayBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(stopPlayBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(hudPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(hubPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(assemblyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(assemblyPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(trashCanBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(conveyorBeltPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(conveyorBeltPanelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -271,12 +271,12 @@ public class MainView extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel assemblyPanel;
+    private javax.swing.JPanel assemblyPanelMain;
     private javax.swing.JPanel contentPanel;
-    private javax.swing.JPanel conveyorBeltPanel;
+    private javax.swing.JPanel conveyorBeltPanelMain;
     private javax.swing.JButton dragBtn;
     private javax.swing.JButton exitBtn;
-    private javax.swing.JPanel hudPanel;
+    private javax.swing.JPanel hubPanelMain;
     private javax.swing.JButton resetBtn;
     private javax.swing.JButton stopPlayBtn;
     private javax.swing.JButton stopPlayBtn1;

@@ -46,10 +46,10 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="assemblyPanel" max="32767" attributes="0"/>
-                      <Component id="hudPanel" max="32767" attributes="0"/>
+                      <Component id="assemblyPanelMain" max="32767" attributes="0"/>
+                      <Component id="hubPanelMain" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="conveyorBeltPanel" min="-2" max="-2" attributes="0"/>
+                          <Component id="conveyorBeltPanelMain" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="trashCanBtn" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -82,13 +82,13 @@
                       <Component id="stopPlayBtn1" min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="hudPanel" min="-2" max="-2" attributes="0"/>
+                  <Component id="hubPanelMain" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="assemblyPanel" min="-2" max="-2" attributes="0"/>
+                  <Component id="assemblyPanelMain" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="trashCanBtn" max="32767" attributes="0"/>
-                      <Component id="conveyorBeltPanel" max="32767" attributes="0"/>
+                      <Component id="conveyorBeltPanelMain" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -96,7 +96,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="hudPanel">
+        <Container class="javax.swing.JPanel" name="hubPanelMain">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="28" red="1c" type="rgb"/>
@@ -116,7 +116,7 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Container class="javax.swing.JPanel" name="assemblyPanel">
+        <Container class="javax.swing.JPanel" name="assemblyPanelMain">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="3b" green="3b" red="3b" type="rgb"/>
@@ -168,7 +168,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitBtnActionPerformed"/>
           </Events>
         </Component>
-        <Container class="javax.swing.JPanel" name="conveyorBeltPanel">
+        <Container class="javax.swing.JPanel" name="conveyorBeltPanelMain">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="3b" green="3b" red="3b" type="rgb"/>
