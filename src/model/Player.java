@@ -40,10 +40,13 @@ public class Player {
         switch (getCurrentFactory()) {
             case 1:
                 position += "Gerente Regional";
+                break;
             case 2:
                 position += "Gerente Producción";
+                break;
             case 3:
                 position += "Gerente General";
+                break;
         }
 
         return position;
