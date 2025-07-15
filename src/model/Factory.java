@@ -11,7 +11,7 @@ public class Factory {
     private final int beltCapacity;
 
     private final GenerateMaterials materialGenerator;
-    private final LinkedList<Material> trashBin;
+    private final LinkedList<Material> trashCan;
     private final LinkedList<Order> orders;
 
     public Factory(int number) {
@@ -20,7 +20,7 @@ public class Factory {
         this.beltCapacity = getBeltCapacity(number);
 
         this.materialGenerator = new GenerateMaterials(beltCapacity);
-        this.trashBin = new LinkedList<>();
+        this.trashCan = new LinkedList<>();
         this.orders = new LinkedList<>();
 
         generateRandomOrders(15);
@@ -87,15 +87,15 @@ public class Factory {
     }
 
     public void discardMaterial(Material material) {
-        trashBin.add(material);
+        trashCan.add(material);
     }
 
     public int calculatePenalty(Material material) {
         return (int) (material.getValue() * 0.6);
     }
 
-    public LinkedList<Material> getTrashBin() {
-        return trashBin;
+    public LinkedList<Material> getTrashCan() {
+        return trashCan;
     }
 
     public LinkedList<Order> getOrders() {
