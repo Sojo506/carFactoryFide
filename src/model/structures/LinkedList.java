@@ -118,6 +118,15 @@ public class LinkedList<T> {
         return size == 0;
     }
 
+    public Node<T> getHead() {
+        return head;
+    }
+
+    public void clear() {
+        head = null;
+        size = 0;
+    }
+
     public void printList() {
         Node<T> current = head;
         while (current != null) {
@@ -125,9 +134,5 @@ public class LinkedList<T> {
             current = current.getNext();
         }
         System.out.println("null");
-    }
-
-    public Node<T> getHead() {
-        return head;
     }
 }
