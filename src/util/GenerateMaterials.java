@@ -10,10 +10,10 @@ public class GenerateMaterials {
     private LinkedList<Material> randomMaterials;
     private int materialQuantity;
 
-    public GenerateMaterials(int materiaslQuantity) {
+    public GenerateMaterials(int materialQuantity) {
         materials = new LinkedList<>();
         randomMaterials = new LinkedList<>();
-        this.materialQuantity = materiaslQuantity;
+        this.materialQuantity = materialQuantity;
 
         materials.add(new Material(MaterialType.MOTOR_DEPORTIVO));
         materials.add(new Material(MaterialType.MOTOR_LUJO));
