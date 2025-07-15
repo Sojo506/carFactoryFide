@@ -6,13 +6,15 @@ public class AssemblyLine {
 
     private Order order;
     private boolean occupied;
+    private int originSlot = -1;
 
     public AssemblyLine() {
         occupied = false;
     }
 
-    public void assignOrder(Order o) {
+    public void assignOrder(Order o, int slot) {
         this.order = o;
+        this.originSlot = slot;
         this.occupied = true;
     }
 
@@ -45,8 +47,14 @@ public class AssemblyLine {
         return order;
     }
 
+    public int getOriginSlot() {
+        return originSlot;
+    }
+
     public void reset() {
         order = null;
+        originSlot = -1;
         occupied = false;
     }
+
 }
