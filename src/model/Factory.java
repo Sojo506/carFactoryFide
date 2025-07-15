@@ -53,10 +53,25 @@ public class Factory {
     }
 
     public void generateRandomOrders(int count) {
+        CarType[] allowedTypes = getAllowedCarTypes(number);
         for (int i = 0; i < count; i++) {
-            Car car = new Car(CarType.values()[(int) (Math.random() * CarType.values().length)]);
+            int rand = (int) (Math.random() * allowedTypes.length);
+            Car car = new Car(allowedTypes[rand]);
             orders.add(new Order(car));
         }
+    }
+
+    private CarType[] getAllowedCarTypes(int factoryNumber) {
+        return switch (factoryNumber) {
+            case 1 ->
+                new CarType[]{CarType.SEDAN_LUJO, CarType.PICKUP_ALTA_GAMA};
+            case 2 ->
+                new CarType[]{CarType.SEDAN_LUJO, CarType.PICKUP_ALTA_GAMA, CarType.MAQUINARIA_PESADA};
+            case 3 ->
+                CarType.values();
+            default ->
+                new CarType[0];
+        };
     }
 
     public void refillBelt() {
