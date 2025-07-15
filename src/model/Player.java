@@ -40,11 +40,11 @@ public class Player {
     public String getPosition() {
         switch (getCurrentFactory()) {
             case 1 ->
-                position += "Gerente Regional";
+                position = "Gerente Regional";
             case 2 ->
-                position += "Gerente Producción";
+                position = "Gerente Producción";
             case 3 ->
-                position += "Gerente General";
+                position = "Gerente General";
         }
 
         return position;
