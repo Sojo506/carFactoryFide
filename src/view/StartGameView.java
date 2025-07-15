@@ -188,7 +188,7 @@ public class StartGameView extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(this, "Have fun " + name + "!", "bro...!", JOptionPane.PLAIN_MESSAGE);
         this.dispose();
-        java.awt.EventQueue.invokeLater(() -> new MainView(this, new Player(name)).setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new MainView(this, new Player(name, 1)).setVisible(true));
     }//GEN-LAST:event_startBtnActionPerformed
 
     private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextFieldActionPerformed
