@@ -35,6 +35,34 @@ public class Car {
         return materialsAdded;
     }
 
+    public boolean canAcceptMaterial(Material material) {
+        MaterialType materialType = material.getType();
+
+        // Verifica si el material está dentro de los requeridos
+        boolean isRequired = false;
+        for (MaterialType requiredType : type.getRequiredMaterials()) {
+            if (requiredType == materialType) {
+                isRequired = true;
+                break;
+            }
+        }
+
+        if (!isRequired) {
+            return false; // No se requiere este tipo
+        }
+
+        // Verifica si ya fue agregado
+        Node<Material> current = materialsAdded.getHead();
+        while (current != null) {
+            if (current.getData().getType() == materialType) {
+                return false; // Ya agregado
+            }
+            current = current.getNext();
+        }
+
+        return true; 
+    }
+
     public boolean isComplete() {
         MaterialType[] required = type.getRequiredMaterials();
         boolean[] used = new boolean[required.length];
