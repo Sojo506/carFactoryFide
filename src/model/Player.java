@@ -14,6 +14,7 @@ public class Player {
 
     public Player(String name, int factoryLevel) {
         this.name = name;
+        this.position = "";
         this.currentFactory = 1;
         this.money = 0;
         this.factory = new Factory(currentFactory);
