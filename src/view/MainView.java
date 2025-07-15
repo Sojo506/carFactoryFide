@@ -1,5 +1,6 @@
 package view;
 
+import controller.GameController;
 import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
 import model.Player;
@@ -9,12 +10,14 @@ import view.panel.HubPanel;
 
 public class MainView extends javax.swing.JFrame {
 
+    private GameController controller;
     private StartGameView start;
     private Player player;
     private int xMouse;
     private int yMouse;
 
     public MainView(StartGameView start, Player player) {
+        controller = new GameController(player);
         this.start = start;
         this.player = player;
         setUndecorated(true);
@@ -29,7 +32,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void initPanels() {
         hubPanelMain.setLayout(new BorderLayout());
-        hubPanelMain.add(new HubPanel(player), BorderLayout.CENTER);
+        hubPanelMain.add(new HubPanel(player, controller), BorderLayout.CENTER);
         hubPanelMain.revalidate();
         hubPanelMain.repaint();
 
