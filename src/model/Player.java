@@ -7,16 +7,17 @@ public class Player {
     private int currentFactory;
     private int money;
     private Factory factory;
+    private boolean hasWon;
 
     public Player() {
     }
 
-    public Player(String name) {
+    public Player(String name, int factoryLevel) {
         this.name = name;
         this.currentFactory = 1;
         this.money = 0;
         this.factory = new Factory(currentFactory);
-        this.position = "";
+        this.hasWon = false;
     }
 
     public int getCurrentFactory() {
@@ -38,20 +39,14 @@ public class Player {
     public String getPosition() {
         switch (getCurrentFactory()) {
             case 1:
-                position = "Gerente Regional";
-                break;
+                position += "Gerente Regional";
             case 2:
-                position = "Gerente Producción";
-                break;
+                position += "Gerente Producción";
             case 3:
-                position = "Gerente General";
-                break;
+                position += "Gerente General";
         }
-        return position;
-    }
 
-    public void setPosition(String position) {
-        this.position = position;
+        return position;
     }
 
     public void addMoney(int amount) {
@@ -66,6 +61,8 @@ public class Player {
         if (currentFactory < 3) {
             currentFactory++;
             factory = new Factory(currentFactory);
+        } else if (currentFactory == 3) {
+            hasWon = true;
         }
     }
 
@@ -74,7 +71,7 @@ public class Player {
     }
 
     public boolean hasWon() {
-        return currentFactory > 3;
+        return hasWon;
     }
 
     @Override
