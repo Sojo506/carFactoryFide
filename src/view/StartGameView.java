@@ -10,7 +10,7 @@ import model.Player;
 
 public class StartGameView extends javax.swing.JFrame {
 
-    private Clip backgroundMusicClip; // Variable para controlar la reproducción
+    public Clip backgroundMusicClip; // Variable para controlar la reproducción
 
     // Variable para guardar la posición de la canción cuando se pausa
     private long clipTimePosition = 0;
@@ -33,9 +33,9 @@ public class StartGameView extends javax.swing.JFrame {
                 backgroundMusicClip.open(audioInput);
                 backgroundMusicClip.loop(Clip.LOOP_CONTINUOUSLY); // Para que se repita infinitamente
             } else {
-                // Opción 2: Si el archivo está dentro del JAR (recomendado para distribución)
                 // Usamos getResource para que Java busque el archivo dentro del paquete compilado
                 URL audioURL = getClass().getResource(filePath);
+
                 if (audioURL != null) {
                     AudioInputStream audioInput = AudioSystem.getAudioInputStream(audioURL);
                     backgroundMusicClip = AudioSystem.getClip();
@@ -52,7 +52,7 @@ public class StartGameView extends javax.swing.JFrame {
 
     public void toggleMusicPlayback() {
         if (backgroundMusicClip == null) {
-            // Si la música no se ha cargado aún, intenta reproducirla
+            // Si la música no se ha cargado, intenta reproducirla
             playBackgroundMusic("../music/gamecarmusic.Wav");
             return;
         }
@@ -64,7 +64,7 @@ public class StartGameView extends javax.swing.JFrame {
         } else {
             // Si la música está pausada o detenida, la reanudamos
             backgroundMusicClip.setMicrosecondPosition(clipTimePosition); // Vuelve a la posición guardada
-            backgroundMusicClip.start(); // Inicia la reproducción
+            backgroundMusicClip.start();
             backgroundMusicClip.loop(Clip.LOOP_CONTINUOUSLY); // Asegura que siga en bucle
         }
     }
