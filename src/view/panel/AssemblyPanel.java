@@ -90,12 +90,24 @@ public class AssemblyPanel extends javax.swing.JPanel {
         AssemblyLine line = controller.getAssemblyLines().getElement(lineIndex);
 
         if (line != null && line.isOccupied() && line.getOrder() != null) {
-            LinkedList<model.Material> materials = line.getOrder().getCar().getMaterialsAdded();
-            String[] matNames = new String[materials.size()];
+            // Obtener materiales para mostrar en la lista de la linea de ensamblaje
+            LinkedList<Material> materials = line.getOrder().getCar().getMaterialsAdded();
 
+            // Crea una LinkedList de String para los nombres de los materiales
+            LinkedList<String> matNamesList = new LinkedList<>();
+
+            // Recorrer la lista y convierte cada material a String
             for (int i = 0; i < materials.size(); i++) {
-                matNames[i] = materials.getElement(i).toString();
+                matNamesList.add(materials.getElement(i).toString());
             }
+
+            // Solo aquí se convierte a arreglo de String para el método de la JList
+            String[] matNames = new String[matNamesList.size()];
+            for (int i = 0; i < matNamesList.size(); i++) {
+                matNames[i] = matNamesList.getElement(i);
+            }
+
+            // Asigna la lista visual al componente correcto según el índice de la línea
             switch (lineIndex) {
                 case 0 ->
                     assemblyList0.setListData(matNames);
@@ -105,7 +117,7 @@ public class AssemblyPanel extends javax.swing.JPanel {
                     assemblyList2.setListData(matNames);
             }
         } else {
-            // Si la línea está vacía, limpia la lista
+            // Si la línea está vacía, limpia la lista visual
             switch (lineIndex) {
                 case 0 ->
                     assemblyList0.setListData(new String[0]);
