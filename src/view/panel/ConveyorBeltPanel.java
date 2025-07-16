@@ -18,7 +18,7 @@ public class ConveyorBeltPanel extends javax.swing.JPanel {
     // Referencia al panel de ensamblaje asociado
     private AssemblyPanel assemblyPanel;
     // Arreglo de botones que representan cada slot de material en la cinta
-    private JButton[] materialBtns;
+    private LinkedList<JButton> materialBtns;
     // Botón para descartar materiales (basurero)
     private JButton trashCanBtn;
     // Índice del material seleccionado actualmente (-1 ninguno)
@@ -33,8 +33,13 @@ public class ConveyorBeltPanel extends javax.swing.JPanel {
         this.assemblyPanel = assemblyPanel;
         this.trashCanBtn = trashCanBtn;
         initComponents();
-        // Inicializa los botones con el orden visual de la interfaz
-        materialBtns = new JButton[]{materialBtn0, materialBtn1, materialBtn2, materialBtn3, materialBtn4};
+        // Inicializa la lista de botones con tu propia LinkedList
+        materialBtns = new LinkedList<>();
+        materialBtns.add(materialBtn0);
+        materialBtns.add(materialBtn1);
+        materialBtns.add(materialBtn2);
+        materialBtns.add(materialBtn3);
+        materialBtns.add(materialBtn4);
         updateBelt();
     }
 
@@ -46,15 +51,16 @@ public class ConveyorBeltPanel extends javax.swing.JPanel {
         LinkedList<Material> belt = controller.getConveyorBelt();
         int beltCapacity = controller.getFactory().getBeltCapacity();
 
-        for (int i = 0; i < materialBtns.length; i++) {
+        for (int i = 0; i < materialBtns.size(); i++) {
+            JButton btn = materialBtns.getElement(i);
             if (i < beltCapacity && i < belt.size()) {
                 Material mat = belt.getElement(i);
-                materialBtns[i].setVisible(true);
-                materialBtns[i].setText(mat.toString());
-                materialBtns[i].setEnabled(true);
-                materialBtns[i].setBackground(new Color(47, 47, 47)); // Color por defecto
+                btn.setVisible(true);
+                btn.setText(mat.toString());
+                btn.setEnabled(true);
+                btn.setBackground(new Color(47, 47, 47)); // Color por defecto
             } else {
-                materialBtns[i].setVisible(false);
+                btn.setVisible(false);
             }
         }
         // Por defecto, nada está seleccionado tras actualizar
@@ -94,12 +100,13 @@ public class ConveyorBeltPanel extends javax.swing.JPanel {
         LinkedList<Material> belt = controller.getConveyorBelt();
 
         if (idx < belt.size()) {
-            materialBtns[idx].setVisible(true);
-            materialBtns[idx].setText(belt.getElement(idx).toString());
-            materialBtns[idx].setEnabled(true);
-            materialBtns[idx].setBackground(new Color(47, 47, 47));
+            JButton btn = materialBtns.getElement(idx);
+            btn.setVisible(true);
+            btn.setText(belt.getElement(idx).toString());
+            btn.setEnabled(true);
+            btn.setBackground(new Color(47, 47, 47));
         } else {
-            materialBtns[idx].setVisible(false);
+            materialBtns.getElement(idx).setVisible(false);
         }
     }
 
@@ -109,8 +116,8 @@ public class ConveyorBeltPanel extends javax.swing.JPanel {
      */
     private void onMaterialBtnSelected(int idx) {
         // Marca el botón seleccionado con color diferente
-        for (int i = 0; i < materialBtns.length; i++) {
-            materialBtns[i].setBackground(i == idx ? new Color(70, 130, 180) : new Color(47, 47, 47));
+        for (int i = 0; i < materialBtns.size(); i++) {
+            materialBtns.getElement(i).setBackground(i == idx ? new Color(70, 130, 180) : new Color(47, 47, 47));
         }
         selectedMaterial = idx;
         controller.setSelectedMaterial(selectedMaterial);
@@ -142,8 +149,8 @@ public class ConveyorBeltPanel extends javax.swing.JPanel {
      * limpia la selección o refresca la vista.
      */
     public void resetColorMaterial() {
-        for (int i = 0; i < materialBtns.length; i++) {
-            materialBtns[i].setBackground(i == selectedMaterial ? new Color(70, 130, 180) : new Color(47, 47, 47));
+        for (int i = 0; i < materialBtns.size(); i++) {
+            materialBtns.getElement(i).setBackground(i == selectedMaterial ? new Color(70, 130, 180) : new Color(47, 47, 47));
         }
     }
 
