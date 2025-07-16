@@ -20,7 +20,7 @@ public class Colors {
     public static final Color WARNING_YELLOW = new Color(0xF2C94C);   // Amarillo de advertencia
     public static final Color SUCCESS_GREEN = new Color(0x6FCF97);    // Verde de éxito (carro correcto)
     public static final Color ERROR_RED = new Color(0xEB5757);        // Rojo de error (descartado o incorrecto)
-    public static final Color ACTIVE_LINE = new Color(0x5A5A5A);      // Gris medio con contraste
+    public static final Color ACTIVE_LINE = new Color(0x00FFFF);
     public static final Color INACTIVE_LINE = new Color(0xA9A9A9);    // Gris oscuro
 
     // Texto y bordes
