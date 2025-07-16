@@ -11,6 +11,9 @@
       </Border>
     </Property>
   </Properties>
+  <Events>
+    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="formMouseClicked"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -28,18 +31,18 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
-              <Component id="materialLabel2" min="-2" max="-2" attributes="0"/>
+              <Component id="materialBtn1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
-              <Component id="materialLabel1" min="-2" max="-2" attributes="0"/>
+              <Component id="materialBtn0" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="191" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-              <Component id="materialLabel3" min="-2" max="-2" attributes="0"/>
+              <Component id="materialBtn2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="materialLabel5" min="-2" max="-2" attributes="0"/>
+              <Component id="materialBtn4" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
-              <Component id="materialLabel4" min="-2" max="-2" attributes="0"/>
+              <Component id="materialBtn3" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -50,30 +53,30 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="materialLabel4" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="materialBtn3" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="materialLabel5" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="materialBtn4" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="14" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="materialLabel1" min="-2" pref="40" max="-2" attributes="0"/>
+              <Component id="materialBtn0" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-              <Component id="materialLabel3" min="-2" pref="40" max="-2" attributes="0"/>
+              <Component id="materialBtn2" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="materialLabel2" min="-2" pref="40" max="-2" attributes="0"/>
+              <Component id="materialBtn1" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="materialLabel3">
+    <Component class="javax.swing.JButton" name="materialBtn2">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="2f" green="2f" red="2f" type="rgb"/>
@@ -89,8 +92,11 @@
         <Property name="focusPainted" type="boolean" value="false"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="materialBtn2ActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="materialLabel2">
+    <Component class="javax.swing.JButton" name="materialBtn1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="2f" green="2f" red="2f" type="rgb"/>
@@ -106,8 +112,11 @@
         <Property name="focusPainted" type="boolean" value="false"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="materialBtn1ActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="materialLabel5">
+    <Component class="javax.swing.JButton" name="materialBtn4">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="2f" green="2f" red="2f" type="rgb"/>
@@ -123,8 +132,11 @@
         <Property name="focusPainted" type="boolean" value="false"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="materialBtn4ActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="materialLabel1">
+    <Component class="javax.swing.JButton" name="materialBtn0">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="2f" green="2f" red="2f" type="rgb"/>
@@ -140,8 +152,11 @@
         <Property name="focusPainted" type="boolean" value="false"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="materialBtn0ActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="materialLabel4">
+    <Component class="javax.swing.JButton" name="materialBtn3">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="2f" green="2f" red="2f" type="rgb"/>
@@ -157,6 +172,9 @@
         <Property name="focusPainted" type="boolean" value="false"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="materialBtn3ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
