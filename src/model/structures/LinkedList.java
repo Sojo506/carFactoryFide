@@ -30,6 +30,27 @@ public class LinkedList<T> {
         size++;
     }
 
+    public void add(int index, T data) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Índice fuera de rango");
+        }
+
+        Node<T> newNode = new Node<>(data);
+
+        if (index == 0) {
+            newNode.setNext(head);
+            head = newNode;
+        } else {
+            Node<T> current = head;
+            for (int i = 0; i < index - 1; i++) {
+                current = current.getNext();
+            }
+            newNode.setNext(current.getNext());
+            current.setNext(newNode);
+        }
+        size++;
+    }
+
     public T getElement(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Fuera de rango");
