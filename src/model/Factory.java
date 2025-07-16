@@ -6,13 +6,13 @@ import util.GenerateMaterials;
 
 public class Factory {
 
-    private final int number;
-    private final int profitGoal;
-    private final int beltCapacity;
+    private int number;
+    private int profitGoal;
+    private int beltCapacity;
 
-    private final GenerateMaterials materialGenerator;
-    private final LinkedList<Material> trashCan;
-    private final LinkedList<Order> orders;
+    private GenerateMaterials materialGenerator;
+    private LinkedList<Material> trashCan;
+    private LinkedList<Order> orders;
 
     public Factory(int number) {
         this.number = number;
@@ -24,6 +24,10 @@ public class Factory {
         this.orders = new LinkedList<>();
 
         generateRandomOrders(15);
+    }
+
+    public GenerateMaterials getMaterialGenerator() {
+        return materialGenerator;
     }
 
     private int getGoalFor(int n) {
