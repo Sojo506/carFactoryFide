@@ -90,7 +90,7 @@ public class MainView extends javax.swing.JFrame {
         dragBtn = new javax.swing.JButton();
         resetBtn = new javax.swing.JButton();
         stopPlayBtn = new javax.swing.JButton();
-        stopPlayBtn1 = new javax.swing.JButton();
+        infoBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -198,15 +198,15 @@ public class MainView extends javax.swing.JFrame {
             }
         });
 
-        stopPlayBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/help.png"))); // NOI18N
-        stopPlayBtn1.setBorderPainted(false);
-        stopPlayBtn1.setContentAreaFilled(false);
-        stopPlayBtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        stopPlayBtn1.setFocusPainted(false);
-        stopPlayBtn1.setFocusable(false);
-        stopPlayBtn1.addActionListener(new java.awt.event.ActionListener() {
+        infoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info.png"))); // NOI18N
+        infoBtn.setBorderPainted(false);
+        infoBtn.setContentAreaFilled(false);
+        infoBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        infoBtn.setFocusPainted(false);
+        infoBtn.setFocusable(false);
+        infoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stopPlayBtn1ActionPerformed(evt);
+                infoBtnActionPerformed(evt);
             }
         });
 
@@ -229,7 +229,7 @@ public class MainView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(stopPlayBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(417, 417, 417)
-                        .addComponent(stopPlayBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(infoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(resetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -245,7 +245,7 @@ public class MainView extends javax.swing.JFrame {
                     .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(resetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(stopPlayBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(stopPlayBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(infoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(hubPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -303,10 +303,10 @@ public class MainView extends javax.swing.JFrame {
         start.toggleMusicPlayback();
     }//GEN-LAST:event_stopPlayBtnActionPerformed
 
-    private void stopPlayBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopPlayBtn1ActionPerformed
+    private void infoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoBtnActionPerformed
         InfoDialog info = new InfoDialog(this, true);
         info.setVisible(true);
-    }//GEN-LAST:event_stopPlayBtn1ActionPerformed
+    }//GEN-LAST:event_infoBtnActionPerformed
 
     private void trashCanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trashCanBtnActionPerformed
         // Obtiene el índice del material actualmente seleccionado en la cinta
@@ -340,9 +340,9 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JButton dragBtn;
     private javax.swing.JButton exitBtn;
     private javax.swing.JPanel hubPanelMain;
+    private javax.swing.JButton infoBtn;
     private javax.swing.JButton resetBtn;
     private javax.swing.JButton stopPlayBtn;
-    private javax.swing.JButton stopPlayBtn1;
     private javax.swing.JButton trashCanBtn;
     // End of variables declaration//GEN-END:variables
 }
