@@ -93,18 +93,10 @@ public class AssemblyPanel extends javax.swing.JPanel {
             // Obtener materiales para mostrar en la lista de la linea de ensamblaje
             LinkedList<Material> materials = line.getOrder().getCar().getMaterialsAdded();
 
-            // Crea una LinkedList de String para los nombres de los materiales
-            LinkedList<String> matNamesList = new LinkedList<>();
-
-            // Recorrer la lista y convierte cada material a String
+            // Crea un arreglo de String para los nombres de los materiales
+            String[] matNames = new String[materials.size()];
             for (int i = 0; i < materials.size(); i++) {
-                matNamesList.add(materials.getElement(i).toString());
-            }
-
-            // Solo aquí se convierte a arreglo de String para el método de la JList
-            String[] matNames = new String[matNamesList.size()];
-            for (int i = 0; i < matNamesList.size(); i++) {
-                matNames[i] = matNamesList.getElement(i);
+                matNames[i] = materials.getElement(i).toString();
             }
 
             // Asigna la lista visual al componente correcto según el índice de la línea
