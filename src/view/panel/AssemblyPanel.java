@@ -90,16 +90,26 @@ public class AssemblyPanel extends javax.swing.JPanel {
         AssemblyLine line = controller.getAssemblyLines().getElement(lineIndex);
 
         if (line != null && line.isOccupied() && line.getOrder() != null) {
-            // Obtener materiales para mostrar en la lista de la linea de ensamblaje
+            // Se obtiene la lista de materiales usando la estructura personalizada LinkedList
             LinkedList<Material> materials = line.getOrder().getCar().getMaterialsAdded();
 
-            // Crea un arreglo de String para los nombres de los materiales
-            String[] matNames = new String[materials.size()];
+            // Se crea una LinkedList de String para nombres de los materiales
+            LinkedList<String> matNamesList = new LinkedList<>();
+
+            // Llenar matNamesList con los nombres de cada material
             for (int i = 0; i < materials.size(); i++) {
-                matNames[i] = materials.getElement(i).toString();
+                matNamesList.add(materials.getElement(i).toString());
             }
 
-            // Asigna la lista visual al componente correcto según el índice de la línea
+            // 
+            // Conversión obligatoria de LinkedList a String[] porque JList SOLO acepta arrays nativos
+            // 
+            String[] matNames = new String[matNamesList.size()];
+            for (int i = 0; i < matNamesList.size(); i++) {
+                matNames[i] = matNamesList.getElement(i);
+            }
+
+            // Mostrar en el componente visual correspondiente
             switch (lineIndex) {
                 case 0 ->
                     assemblyList0.setListData(matNames);
@@ -109,7 +119,7 @@ public class AssemblyPanel extends javax.swing.JPanel {
                     assemblyList2.setListData(matNames);
             }
         } else {
-            // Si la línea está vacía, limpia la lista visual
+            // Limpia la lista visual si no hay materiales
             switch (lineIndex) {
                 case 0 ->
                     assemblyList0.setListData(new String[0]);
