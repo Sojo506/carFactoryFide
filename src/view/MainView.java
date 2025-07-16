@@ -10,41 +10,71 @@ import view.panel.HubPanel;
 
 public class MainView extends javax.swing.JFrame {
 
+    private HubPanel hubPanel;
+    private ConveyorBeltPanel conveyorBeltPanel;
+    private AssemblyPanel assemblyPanel;
     private GameController controller;
     private StartGameView start;
     private Player player;
     private int xMouse;
     private int yMouse;
 
+    // Constructor principal de la ventana del juego
     public MainView(StartGameView start, Player player) {
-        controller = new GameController(player);
+        // Referencia a la pantalla de inicio y al jugador actual
         this.start = start;
         this.player = player;
+
+        // Remueve el borde de la ventana principal para custom look & feel
         setUndecorated(true);
-        initComponents();
-        setResizable(false);
-        setLocationRelativeTo(null);
-        //setSize(1000, 700);
+
+        // Inicializa los componentes de Swing (paneles, botones, etc.)
+        initComponents(); // trashCanBtn debe ser inicializado aquí si es parte del diseño
+
+        // Instancia el controlador del juego (gestiona lógica y estado)
+        controller = new GameController(player);
+
+        // Panel de líneas de ensamblaje, aún no enlazado a conveyor ni hub
+        assemblyPanel = new AssemblyPanel(this, controller, null, null);
+
+        // Panel de la cinta transportadora, enlazado al assemblyPanel y al botón de basura
+        conveyorBeltPanel = new ConveyorBeltPanel(controller, assemblyPanel, trashCanBtn);
+
+        // Ahora sí, conecta el assemblyPanel con la conveyorBeltPanel
+        assemblyPanel.setConveyorBeltPanel(conveyorBeltPanel);
+
+        // Panel de la HUD (órdenes, dinero, meta, etc.)
+        hubPanel = new HubPanel(player, controller, assemblyPanel);
+
+        // Termina de enlazar el assemblyPanel con el hubPanel
+        assemblyPanel.setHubPanel(hubPanel);
+
+        setResizable(false); // No se puede redimensionar
+        setLocationRelativeTo(null); // Centra la ventana al abrir
+        trashCanBtn.setEnabled(false); // El basurero está deshabilitado por defecto
 
         initPanels();
-
     }
 
     private void initPanels() {
         hubPanelMain.setLayout(new BorderLayout());
-        hubPanelMain.add(new HubPanel(player, controller), BorderLayout.CENTER);
+        hubPanelMain.add(hubPanel, BorderLayout.CENTER);
         hubPanelMain.revalidate();
         hubPanelMain.repaint();
 
         assemblyPanelMain.setLayout(new BorderLayout());
-        assemblyPanelMain.add(new AssemblyPanel(), BorderLayout.CENTER);
+        assemblyPanelMain.add(assemblyPanel, BorderLayout.CENTER);
         assemblyPanelMain.revalidate();
         assemblyPanelMain.repaint();
 
         conveyorBeltPanelMain.setLayout(new BorderLayout());
-        conveyorBeltPanelMain.add(new ConveyorBeltPanel(), BorderLayout.CENTER);
+        conveyorBeltPanelMain.add(conveyorBeltPanel, BorderLayout.CENTER);
         conveyorBeltPanelMain.revalidate();
         conveyorBeltPanelMain.repaint();
+    }
+
+    public void disableTrashCan() {
+        trashCanBtn.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -99,6 +129,11 @@ public class MainView extends javax.swing.JFrame {
         trashCanBtn.setFocusPainted(false);
         trashCanBtn.setFocusable(false);
         trashCanBtn.setName(""); // NOI18N
+        trashCanBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trashCanBtnActionPerformed(evt);
+            }
+        });
 
         exitBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
         exitBtn.setBorderPainted(false);
@@ -255,6 +290,7 @@ public class MainView extends javax.swing.JFrame {
         int confirmacion = JOptionPane.showConfirmDialog(this, "Seguro que deseas reiniciar el juego", "Bro what?", JOptionPane.YES_NO_OPTION);
 
         if (confirmacion == JOptionPane.YES_OPTION) {
+            start.backgroundMusicClip.stop();
 
             java.awt.EventQueue.invokeLater(() -> {
                 new StartGameView().setVisible(true);
@@ -271,6 +307,30 @@ public class MainView extends javax.swing.JFrame {
         InfoDialog info = new InfoDialog(this, true);
         info.setVisible(true);
     }//GEN-LAST:event_stopPlayBtn1ActionPerformed
+
+    private void trashCanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trashCanBtnActionPerformed
+        // Obtiene el índice del material actualmente seleccionado en la cinta
+        int index = controller.getSelectedMaterial();
+
+        // Si hay algún material seleccionado (índice válido)
+        if (index != -1) {
+            // Llama al método que descarta el material en ConveyorBeltPanel.
+            // Este método ya maneja la penalización, la eliminación y la actualización visual.
+            conveyorBeltPanel.discardSelectedMaterial(); // <--- Este es el llamado correcto
+
+            // Actualiza la información del HUD (dinero, meta, etc.)
+            hubPanel.updateHUB();
+
+            // Muestra un mensaje al usuario notificando la penalización
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Material eliminado y penalizado",
+                    "Eliminado",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+
+        }
+    }//GEN-LAST:event_trashCanBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
