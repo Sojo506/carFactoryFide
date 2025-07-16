@@ -4,32 +4,44 @@ import model.*;
 import model.enums.OrderStatus;
 import model.structures.LinkedList;
 
+/**
+ * GameController Clase central del juego. Coordina la lógica principal de la
+ * fábrica, maneja el estado de las órdenes, las líneas de ensamblaje y la cinta
+ * de materiales, y realiza todas las operaciones críticas del juego.
+ */
 public class GameController {
 
     private Player player;
-    private Factory factory;
-    private LinkedList<Order> allOrders;
-    private LinkedList<Order> visibleOrders;
-    private LinkedList<AssemblyLine> assemblyLines;
+    private Factory factory;                // Fábrica actual del jugador
+    private LinkedList<Order> allOrders;    // Todas las órdenes de la fábrica actual
+    private LinkedList<Order> visibleOrders;// Órdenes visibles en el HubPanel (máx 5)
+    private LinkedList<AssemblyLine> assemblyLines; // 3 líneas de ensamblaje
     private int maxAssemblyLines = 3;
     private int maxVisibleOrders = 5;
-    private int selectedMaterial = -1;
+    private int selectedMaterial = -1;      // Índice del material seleccionado en la cinta
 
+    /**
+     * Constructor principal. Recibe el jugador, obtiene la fábrica actual y
+     * crea líneas de ensamblaje vacías. Llena las órdenes visibles iniciales.
+     */
     public GameController(Player player) {
         this.player = player;
         this.factory = player.getFactory();
-        this.allOrders = factory.getOrders();
-        this.visibleOrders = new LinkedList<>();
-        this.assemblyLines = new LinkedList<>();
+        this.allOrders = factory.getOrders();         // Todas las órdenes de la fábrica
+        this.visibleOrders = new LinkedList<>();      // Las órdenes que ve el usuario en el hub
+        this.assemblyLines = new LinkedList<>();      // 3 líneas de ensamblaje
 
         for (int i = 0; i < maxAssemblyLines; i++) {
             assemblyLines.add(new AssemblyLine());
         }
 
-        fillVisibleOrders();
+        fillVisibleOrders(); // Carga las primeras 5 órdenes en pantalla
     }
 
-    // Llenar los 5 slots del HubPanel con órdenes aleatorias (o null si ya no hay)
+    /**
+     * Llena los slots de órdenes visibles con órdenes aleatorias (o null si ya
+     * no quedan más).
+     */
     private void fillVisibleOrders() {
         visibleOrders.clear();
         for (int i = 0; i < maxVisibleOrders; i++) {
@@ -37,7 +49,10 @@ public class GameController {
         }
     }
 
-    // Obtener la siguiente orden disponible del pool, o null si ya no hay
+    /**
+     * Obtiene una orden aleatoria de las órdenes restantes en la fábrica. Si ya
+     * no hay órdenes, retorna null.
+     */
     private Order getNextOrderOrNull() {
         if (!allOrders.isEmpty()) {
             int randIdx = (int) (Math.random() * allOrders.size());
@@ -47,83 +62,102 @@ public class GameController {
         }
     }
 
-    // Aceptar orden desde el HubPanel (índice 0 a 4)
+    /**
+     * Permite aceptar una orden del hub, colocándola en la primera línea de
+     * ensamblaje disponible. Devuelve true si fue posible, false si todas las
+     * líneas están ocupadas.
+     */
     public boolean acceptOrder(int visibleOrderIndex) {
         for (int i = 0; i < assemblyLines.size(); i++) {
             AssemblyLine line = assemblyLines.getElement(i);
             if (!line.isOccupied()) {
                 Order order = visibleOrders.getElement(visibleOrderIndex);
                 if (order != null) {
-                    line.assignOrder(order, visibleOrderIndex); // Guarda el índice de origen
+                    line.assignOrder(order, visibleOrderIndex); // Asigna la orden y guarda su slot de origen
                     order.setStatus(OrderStatus.IN_PROGRESS);
                     return true;
                 }
             }
         }
-        return false;
+        return false; // No hay líneas disponibles
     }
 
-    // Rechazar orden desde el HubPanel (índice 0 a 4)
+    /**
+     * Rechaza una orden del hub. Quita la orden actual y la reemplaza por una
+     * nueva si quedan disponibles (o null).
+     */
     public void rejectOrder(int visibleOrderIndex) {
-        // Quita la orden actual y la reemplaza por otra (o null)
         visibleOrders.setElement(visibleOrderIndex, getNextOrderOrNull());
     }
 
-    // Completar una orden en ensamblaje (cuando se termina el auto)
+    /**
+     * Marca como completada la orden en la línea de ensamblaje indicada, libera
+     * la línea, y coloca una nueva orden (o null) en el slot visible. NOTA: La
+     * suma de capital se realiza al completar el auto (ver addMaterialToLine).
+     */
     public void completeOrderInLine(int lineIndex, int visibleOrderIndex) {
-        // Libera la línea
         AssemblyLine line = assemblyLines.getElement(lineIndex);
         if (line.getOrder() != null) {
-            line.getOrder().setStatus(model.enums.OrderStatus.COMPLETED);
+            line.getOrder().setStatus(OrderStatus.COMPLETED);
             line.getOrder().setCompleted(true);
         }
-        line.reset();
-        // Refresca el slot de visibleOrders (agrega nueva orden si quedan, o null si no)
+        line.reset(); // Libera la línea de ensamblaje
         visibleOrders.setElement(visibleOrderIndex, getNextOrderOrNull());
-
-        // Falta sumar capital
     }
 
-    // Cancelar (rechazar) una orden ya en ensamblaje
+    /**
+     * Cancela una orden en proceso (por ejemplo, si el usuario la rechaza en
+     * ensamblaje). Libera la línea y muestra una nueva orden en el hub.
+     */
     public void cancelAssemblyOrder(int lineIndex, int visibleOrderIndex) {
-        // Libera la línea
         assemblyLines.getElement(lineIndex).reset();
-        // El slot correspondiente en el HubPanel se refresca
         visibleOrders.setElement(visibleOrderIndex, getNextOrderOrNull());
-        // Si no hay más órdenes, slot queda null
     }
 
-    // Obtener la cinta actual de materiales (según fábrica)
+    /**
+     * Devuelve la cinta transportadora actual de materiales. Este método es
+     * usado por los paneles para mostrar la cinta.
+     */
     public LinkedList<Material> getConveyorBelt() {
         return factory.getConveyorBelt();
     }
 
-    // Eliminar (consumir) un material de la cinta, lo usas al agregar a ensamblaje o desechar
+    /**
+     * Quita un material de la cinta (por índice). Se usa al agregar a
+     * ensamblaje o desechar.
+     */
     public Material consumeMaterial(int index) {
         return factory.consumeMaterial(index);
     }
 
-    // Agregar material a línea de ensamblaje
+    /**
+     * Intenta agregar un material a una línea de ensamblaje. Si el material es
+     * válido para ese auto, lo agrega, lo elimina de la cinta y si completa el
+     * auto, suma el profit al jugador y marca la orden como completa.
+     */
     public boolean addMaterialToLine(Material material, int lineIndex) {
         AssemblyLine line = assemblyLines.getElement(lineIndex);
         if (line != null && line.isOccupied()) {
             if (line.getOrder().getCar().canAcceptMaterial(material)) {
                 line.addMaterial(material);
-                // Elimina el material de la cinta
-                removeMaterialFromBelt(material);
-                // Si el auto está completo, marca la orden y paga
+                removeMaterialFromBelt(material); // Elimina el material usado de la cinta
+
+                // Si el auto está completo, marca la orden y suma profit
                 if (line.getOrder().getCar().isComplete()) {
                     line.getOrder().setCompleted(true);
-                    line.getOrder().setStatus(model.enums.OrderStatus.COMPLETED);
+                    line.getOrder().setStatus(OrderStatus.COMPLETED);
                     player.addMoney(line.getOrder().getCar().getProfit());
                 }
                 return true;
             }
         }
-        return false;
+        return false; // Material no válido para ese auto/orden
     }
 
-    // Elimina material de la cinta por objeto (para control desde panel)
+    /**
+     * Elimina un material específico de la cinta, buscándolo por referencia.
+     * Esto asegura que la cinta nunca tenga duplicados después de actualizar.
+     */
     public void removeMaterialFromBelt(Material material) {
         LinkedList<Material> belt = getConveyorBelt();
         for (int i = 0; i < belt.size(); i++) {
@@ -132,29 +166,30 @@ public class GameController {
                 break;
             }
         }
-        factory.refillBelt();
+        factory.refillBelt(); // Siempre repone la cinta después de quitar un material
     }
 
+    /**
+     * Descarta un material (botón basurero): penaliza al jugador, elimina el
+     * material, y coloca uno nuevo en esa posición (que no se repita en la
+     * cinta actual).
+     */
     public void discardMaterial(int index) {
         LinkedList<Material> belt = getConveyorBelt();
         Material mat = belt.getElement(index);
 
         if (mat != null) {
-            factory.discardMaterial(mat); // penaliza y procesa eliminación
-            player.subtractMoney(factory.calculatePenalty(mat)); // penaliza capital
+            factory.discardMaterial(mat); // Aplica penalización y lógica de eliminación
+            player.subtractMoney(factory.calculatePenalty(mat)); // Descuenta el capital
 
-            // Elimina el material del slot
+            // Elimina el material del slot y trae uno nuevo que no esté repetido
             belt.remove(index);
-
-            // Ahora busca un material único
             Material nuevo = factory.getMaterialGenerator().getUniqueRandomMaterial(belt);
-
-            // Inserta en la misma posición
             belt.add(index, nuevo);
         }
     }
 
-    // Métodos para refrescar información en los paneles (getters para HUD, etc.)
+    // MÉTODOS PARA OBTENER INFORMACIÓN PARA EL HUB O LOS PANELES
     public int getPlayerMoney() {
         return player.getMoney();
     }
@@ -171,7 +206,7 @@ public class GameController {
         return player.getPosition();
     }
 
-    // Acceder al estado actual
+    // ACCESOS AL ESTADO ACTUAL DEL JUEGO
     public LinkedList<AssemblyLine> getAssemblyLines() {
         return assemblyLines;
     }
@@ -196,13 +231,16 @@ public class GameController {
         this.selectedMaterial = selectedMaterial;
     }
 
-    // Refresca todo para una nueva fábrica (cuando el jugador asciende)
+    /**
+     * Prepara todo para una nueva fábrica (cuando el usuario sube de
+     * nivel/fábrica). Cambia la fábrica, reinicia las órdenes y limpia las
+     * líneas de ensamblaje.
+     */
     public void startNewFactory() {
         player.advanceFactory();
         this.factory = player.getFactory();
         this.allOrders = factory.getOrders();
         fillVisibleOrders();
-
         for (int i = 0; i < assemblyLines.size(); i++) {
             assemblyLines.getElement(i).reset();
         }
