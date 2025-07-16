@@ -14,9 +14,12 @@ import model.structures.LinkedList;
 public class HubPanel extends javax.swing.JPanel {
 
     private Player player;
+    // Controlador principal del juego
     private GameController controller;
+    // Panel de ensamblaje para refrescar la vista
     private AssemblyPanel assemblyPanel;
 
+    // Constructor: inicializa todo el HUB, refresca info inicial y bloquea avanzar de fábrica
     public HubPanel(Player player, GameController controller, AssemblyPanel assemblyPanel) {
         this.player = player;
         this.controller = controller;
@@ -27,14 +30,14 @@ public class HubPanel extends javax.swing.JPanel {
         nextfactoryBtn.setEnabled(false);
     }
 
-    // Actualiza los datos visibles del HUB
+    // Actualiza la información visible del HUB (posición, fábrica, dinero, meta, etc)
     public void updateHUB() {
         positionLabel.setText("Puesto: " + player.getPosition());
         factoryLabel.setText("Fábrica: " + player.getCurrentFactory());
         moneyLabel.setText("Capital: $" + player.getMoney());
         goalLabel.setText("Meta: $" + player.getFactory().getProfitGoal());
 
-        // Habilita el botón de avanzar de fábrica solo si llegaste a la meta
+        // Solo activa el botón si ya se llegó a la meta
         if (player.getMoney() >= player.getFactory().getProfitGoal()) {
             nextfactoryBtn.setEnabled(true);
             nextfactoryBtn.setBackground(new Color(111, 207, 151)); // verde
@@ -46,7 +49,7 @@ public class HubPanel extends javax.swing.JPanel {
         }
     }
 
-    // Lógica para aceptar una orden del panel
+    // Intenta aceptar la orden en el slot indicado del Hub
     private void onAcceptOrder(int index) {
         boolean accepted = controller.acceptOrder(index);
 
@@ -55,19 +58,19 @@ public class HubPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this,
                     "No hay líneas de ensamblaje disponibles.", "Aviso", JOptionPane.WARNING_MESSAGE);
         } else {
-            // Refresca títulos y colores de líneas
+            // Actualiza visual de las líneas de ensamblaje
             assemblyPanel.updateAllTitles();
             assemblyPanel.updateAssemblyLineBackgrounds();
         }
-        // Actualiza la lista de órdenes visibles
+        // Refresca lista de órdenes del Hub
         updateOrdersDisplay();
     }
 
-    // Lógica para rechazar una orden, ya sea en progreso o pendiente
+    // Lógica para rechazar (o cancelar) una orden del Hub
     private void onRejectOrder(int idx) {
         int lineIndex = -1;
 
-        // Busca si la orden está asignada a una línea
+        // Verifica si la orden ya está en alguna línea de ensamblaje
         for (int i = 0; i < controller.getAssemblyLines().size(); i++) {
             AssemblyLine line = controller.getAssemblyLines().getElement(i);
             if (line.isOccupied() && line.getOriginSlot() == idx) {
@@ -76,23 +79,23 @@ public class HubPanel extends javax.swing.JPanel {
             }
         }
         if (lineIndex != -1) {
-            // Si está en ensamblaje, cancela y refresca todo
+            // Si está en ensamblaje, cancelar y refrescar todo
             controller.cancelAssemblyOrder(lineIndex, idx);
             updateOrdersDisplay();
             assemblyPanel.updateAssemblyLineBackgrounds();
             assemblyPanel.updateAllTitles();
         } else {
-            // Si solo está pendiente en el Hub, reemplaza por otra
+            // Si solo está pendiente (no aceptada), reemplazar por otra
             controller.rejectOrder(idx);
             updateOrdersDisplay();
         }
     }
 
-    // Refresca todos los paneles de órdenes visibles en el HUB
+    // Refresca visualmente todos los slots de órdenes del Hub (máximo 5)
     public void updateOrdersDisplay() {
         LinkedList<Order> orders = controller.getVisibleOrders();
 
-        // Refresca cada panel de orden individualmente
+        // Refresca cada panel de orden individualmente (slots 0-4)
         refreshOrderPanel(orderTitle0, orderProgress0, acceptBtn0, rejectBtn0, orders, 0);
         refreshOrderPanel(orderTitle1, orderProgress1, acceptBtn1, rejectBtn1, orders, 1);
         refreshOrderPanel(orderTitle2, orderProgress2, acceptBtn2, rejectBtn2, orders, 2);
@@ -100,24 +103,25 @@ public class HubPanel extends javax.swing.JPanel {
         refreshOrderPanel(orderTitle4, orderProgress4, acceptBtn4, rejectBtn4, orders, 4);
     }
 
-    // Refresca la visualización de una sola orden (nombre, estado, botones)
+    // Refresca la visualización de un slot de orden individual del Hub
     private void refreshOrderPanel(JLabel title, JLabel progress,
             JButton accept, JButton reject,
             LinkedList<Order> orders, int idx) {
         Order order = orders.getElement(idx);
 
         if (order == null) {
-            // Sin orden en este slot
+            // Si no hay orden en este slot
             title.setText("Sin órdenes");
             progress.setText("");
             accept.setEnabled(false);
             reject.setEnabled(false);
         } else {
+            // Muestra el nombre del carro y el estado de la orden
             title.setText(order.getCar().getType().getCarName());
             progress.setText(order.getStatus().toString());
-            // Solo se puede aceptar si aún no está en progreso o completada
+            // Permite aceptar si la orden no está en progreso ni completada
             accept.setEnabled(order.getStatus() == model.enums.OrderStatus.NOT_ACCEPTED);
-            // Solo se puede rechazar si no está completada
+            // Permite rechazar si la orden no está completada
             reject.setEnabled(order.getStatus() != model.enums.OrderStatus.COMPLETED);
         }
     }
