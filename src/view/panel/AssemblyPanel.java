@@ -2,6 +2,7 @@ package view.panel;
 
 import controller.GameController;
 import java.awt.Color;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import model.AssemblyLine;
 import model.Material;
@@ -187,14 +188,7 @@ public class AssemblyPanel extends javax.swing.JPanel {
                     controller.completeOrderInLine(lineIndex, visibleOrderIndex);
 
                     // Limpia solo la lista de materiales de la línea completada
-                    switch (lineIndex) {
-                        case 0 ->
-                            assemblyList0.setListData(new String[0]);
-                        case 1 ->
-                            assemblyList1.setListData(new String[0]);
-                        case 2 ->
-                            assemblyList2.setListData(new String[0]);
-                    }
+                    clearList(lineIndex);
 
                     // Refresca títulos, fondos y panel de información
                     updateAllTitles();
@@ -259,6 +253,17 @@ public class AssemblyPanel extends javax.swing.JPanel {
                 case 2 ->
                     assemblyLinePanel2.setBackground(bgColor);
             }
+        }
+    }
+
+    public void clearList(int index) {
+        switch (index) {
+            case 0 ->
+                assemblyList0.setListData(new String[0]);
+            case 1 ->
+                assemblyList1.setListData(new String[0]);
+            case 2 ->
+                assemblyList2.setListData(new String[0]);
         }
     }
 
@@ -536,4 +541,17 @@ public class AssemblyPanel extends javax.swing.JPanel {
     public void setHubPanel(HubPanel hubPanel) {
         this.hubPanel = hubPanel;
     }
+
+    public JList getAssemblyList0() {
+        return assemblyList0;
+    }
+
+    public JList getAssemblyList1() {
+        return assemblyList1;
+    }
+
+    public JList getAssemblyList2() {
+        return assemblyList2;
+    }
+
 }
