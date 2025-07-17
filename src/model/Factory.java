@@ -1,7 +1,7 @@
 package model;
 
 import model.enums.CarType;
-import model.structures.LinkedList;
+import model.structure.linkedlist.LinkedList;
 import util.GenerateMaterials;
 
 public class Factory {

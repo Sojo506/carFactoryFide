@@ -4,7 +4,7 @@ import controller.GameController;
 import java.awt.Color;
 import javax.swing.JButton;
 import model.Material;
-import model.structures.LinkedList;
+import model.structure.linkedlist.LinkedList;
 
 /**
  * Panel visual para mostrar y gestionar la cinta transportadora de materiales

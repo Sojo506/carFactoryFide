@@ -9,7 +9,7 @@ import javax.swing.SwingUtilities;
 import model.AssemblyLine;
 import model.Order;
 import model.Player;
-import model.structures.LinkedList;
+import model.structure.linkedlist.LinkedList;
 
 public class HubPanel extends javax.swing.JPanel {
 

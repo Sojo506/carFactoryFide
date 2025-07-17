@@ -2,8 +2,8 @@ package model;
 
 import model.enums.CarType;
 import model.enums.MaterialType;
-import model.structures.LinkedList;
-import model.structures.Node;
+import model.structure.linkedlist.LinkedList;
+import model.structure.linkedlist.Node;
 
 public class Car {
 

@@ -1,4 +1,4 @@
-package model.structures;
+package model.structure.linkedlist;
 
 public class Node<T> {
 

@@ -2,7 +2,7 @@ package controller;
 
 import model.*;
 import model.enums.OrderStatus;
-import model.structures.LinkedList;
+import model.structure.linkedlist.LinkedList;
 
 /**
  * GameController Clase central del juego. Coordina la lógica principal de la

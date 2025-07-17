@@ -6,7 +6,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import model.AssemblyLine;
 import model.Material;
-import model.structures.LinkedList;
+import model.structure.linkedlist.LinkedList;
 import util.Colors;
 import view.MainView;
 

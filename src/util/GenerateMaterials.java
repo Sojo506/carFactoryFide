@@ -2,7 +2,7 @@ package util;
 
 import model.Material;
 import model.enums.MaterialType;
-import model.structures.LinkedList;
+import model.structure.linkedlist.LinkedList;
 
 public class GenerateMaterials {
 

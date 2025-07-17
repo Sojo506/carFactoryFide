@@ -1,4 +1,4 @@
-package model.structures;
+package model.structure.linkedlist;
 
 import java.util.Random;
 import model.Car;
