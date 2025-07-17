@@ -84,6 +84,7 @@ public class HubPanel extends javax.swing.JPanel {
             updateOrdersDisplay();
             assemblyPanel.updateAssemblyLineBackgrounds();
             assemblyPanel.updateAllTitles();
+            assemblyPanel.clearList(idx);
         } else {
             // Si solo está pendiente (no aceptada), reemplazar por otra
             controller.rejectOrder(idx);
