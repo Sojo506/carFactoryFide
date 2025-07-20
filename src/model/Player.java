@@ -5,7 +5,7 @@ public class Player {
     private String name;
     private String position;
     private int currentFactory;
-    private int money;
+    private int capital;
     private Factory factory;
     private boolean hasWon;
 
@@ -16,7 +16,7 @@ public class Player {
         this.name = name;
         this.position = "";
         this.currentFactory = 1;
-        this.money = 0;
+        this.capital = 0;
         this.factory = new Factory(currentFactory);
         this.hasWon = false;
     }
@@ -25,8 +25,12 @@ public class Player {
         return currentFactory;
     }
 
-    public int getMoney() {
-        return money;
+    public int getCapital() {
+        return capital;
+    }
+
+    public void setCapital(int capital) {
+        this.capital = capital;
     }
 
     public String getName() {
@@ -50,12 +54,12 @@ public class Player {
         return position;
     }
 
-    public void addMoney(int amount) {
-        this.money += amount;
+    public void addCapital(int capital) {
+        this.capital += capital;
     }
 
-    public void subtractMoney(int amount) {
-        this.money -= amount;
+    public void subtractCapital(int capital) {
+        this.capital -= capital;
     }
 
     public void advanceFactory() {
@@ -77,6 +81,6 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Factory: " + currentFactory + " | Money: ¢" + money;
+        return "Factory: " + currentFactory + " | Capital: $" + capital;
     }
 }
