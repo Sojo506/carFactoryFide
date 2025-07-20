@@ -32,50 +32,53 @@ public class Factory {
 
     private int getGoalFor(int n) {
         return switch (n) {
-            case 1 ->
-                90000;
-            case 2 ->
-                125000;
-            case 3 ->
-                275000;
-            default ->
-                0;
+            case 1 -> 90000;
+            case 2 -> 125000;
+            case 3 -> 275000;
+            default -> 0;
         };
     }
 
     private int getBeltCapacity(int n) {
         return switch (n) {
-            case 1 ->
-                3;
-            case 2 ->
-                4;
-            case 3 ->
-                5;
-            default ->
-                0;
+            case 1 -> 3;
+            case 2 -> 4;
+            case 3 -> 5;
+            default -> 0;
         };
     }
 
     public void generateRandomOrders(int count) {
-        CarType[] allowedTypes = getAllowedCarTypes(number);
+        LinkedList<CarType> allowedTypes = getAllowedCarTypes(number);
+        
         for (int i = 0; i < count; i++) {
-            int rand = (int) (Math.random() * allowedTypes.length);
-            Car car = new Car(allowedTypes[rand]);
+            int rand = (int) (Math.random() * allowedTypes.size());
+            Car car = new Car(allowedTypes.getElement(rand));
             orders.add(new Order(car));
         }
     }
 
-    private CarType[] getAllowedCarTypes(int factoryNumber) {
-        return switch (factoryNumber) {
-            case 1 ->
-                new CarType[]{CarType.SEDAN_LUJO, CarType.PICKUP_ALTA_GAMA};
-            case 2 ->
-                new CarType[]{CarType.SEDAN_LUJO, CarType.PICKUP_ALTA_GAMA, CarType.MAQUINARIA_PESADA};
-            case 3 ->
-                CarType.values();
-            default ->
-                new CarType[0];
-        };
+    private LinkedList<CarType> getAllowedCarTypes(int factoryNumber) {
+        LinkedList<CarType> list = new LinkedList<>();
+        
+        switch (factoryNumber) {
+            case 1 -> {
+                list.add(CarType.SEDAN_LUJO);
+                list.add(CarType.PICKUP_ALTA_GAMA);
+            }
+            case 2 -> {
+                list.add(CarType.SEDAN_LUJO);
+                list.add(CarType.PICKUP_ALTA_GAMA);
+                list.add(CarType.MAQUINARIA_PESADA);
+            }
+            case 3 -> {
+                // CarType.values() devuelve un array, así que lo convertimos a LinkedList
+                for (CarType ct : CarType.values()) {
+                    list.add(ct);
+                }
+            }
+        }
+        return list;
     }
 
     public void refillBelt() {
@@ -95,7 +98,7 @@ public class Factory {
     }
 
     public int calculatePenalty(Material material) {
-        return (int) (material.getValue() * 0.6);
+        return (int) (material.getValue() * 0.3);
     }
 
     public LinkedList<Material> getTrashCan() {
