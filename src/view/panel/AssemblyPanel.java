@@ -6,6 +6,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import model.AssemblyLine;
 import model.Material;
+import model.Order;
 import model.structure.linkedlist.LinkedList;
 import util.Colors;
 import view.MainView;
@@ -45,7 +46,7 @@ public class AssemblyPanel extends javax.swing.JPanel {
      */
     public void updateAllTitles() {
         for (int i = 0; i < 3; i++) {
-            model.AssemblyLine line = controller.getAssemblyLines().getElement(i);
+            AssemblyLine line = controller.getAssemblyLines().getElement(i);
             String title = "Vacío";
 
             if (line != null && line.isOccupied() && line.getOrder() != null) {
@@ -67,7 +68,7 @@ public class AssemblyPanel extends javax.swing.JPanel {
      * Limpia las listas de materiales mostradas en las 3 líneas (útil al
      * resetear panel).
      */
-    private void clearAllLists() {
+    public void clearAllLists() {
         assemblyList0.setListData(new String[0]);
         assemblyList1.setListData(new String[0]);
         assemblyList2.setListData(new String[0]);
@@ -157,7 +158,7 @@ public class AssemblyPanel extends javax.swing.JPanel {
      * Método llamado cuando se selecciona un material en la cinta. Guarda el
      * material y habilita los botones en las líneas disponibles.
      */
-    public void onMaterialSelected(model.Material material) {
+    public void onMaterialSelected(Material material) {
         this.selectedMaterial = material;
         enableAvailableLines();
     }
@@ -183,7 +184,7 @@ public class AssemblyPanel extends javax.swing.JPanel {
 
                 if (line.getOrder() != null && line.getOrder().getCar().isComplete()) {
                     int visibleOrderIndex = line.getOriginSlot();
-                    model.Order completedOrder = line.getOrder();
+                    Order completedOrder = line.getOrder();
 
                     controller.completeOrderInLine(lineIndex, visibleOrderIndex);
 
@@ -200,7 +201,7 @@ public class AssemblyPanel extends javax.swing.JPanel {
 
                     // Muestra mensaje al usuario por completar la orden
                     JOptionPane.showMessageDialog(this,
-                            "¡Linda! Completaste la orden:\n"
+                            "Linda! Completaste la orden:\n"
                             + completedOrder.getCar().getType().getCarName(),
                             "Orden completada",
                             JOptionPane.INFORMATION_MESSAGE
