@@ -44,7 +44,7 @@ public class MainView extends javax.swing.JFrame {
         assemblyPanel.setConveyorBeltPanel(conveyorBeltPanel);
 
         // Panel de la HUD (órdenes, dinero, meta, etc.)
-        hubPanel = new HubPanel(player, controller, assemblyPanel);
+        hubPanel = new HubPanel(player, controller, assemblyPanel, conveyorBeltPanel);
 
         // Termina de enlazar el assemblyPanel con el hubPanel
         assemblyPanel.setHubPanel(hubPanel);
@@ -314,14 +314,11 @@ public class MainView extends javax.swing.JFrame {
 
         // Si hay algún material seleccionado (índice válido)
         if (index != -1) {
-            // Llama al método que descarta el material en ConveyorBeltPanel.
-            // Este método ya maneja la penalización, la eliminación y la actualización visual.
-            conveyorBeltPanel.discardSelectedMaterial(); // <--- Este es el llamado correcto
+            conveyorBeltPanel.discardSelectedMaterial();
 
             // Actualiza la información del HUD (dinero, meta, etc.)
             hubPanel.updateHUB();
 
-            // Muestra un mensaje al usuario notificando la penalización
             JOptionPane.showMessageDialog(
                     this,
                     "Material eliminado y penalizado",
