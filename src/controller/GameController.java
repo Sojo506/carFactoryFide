@@ -166,7 +166,6 @@ public class GameController {
                 break;
             }
         }
-        factory.refillBelt(); // Siempre repone la cinta después de quitar un material
     }
 
     /**
@@ -239,9 +238,12 @@ public class GameController {
     public void startNewFactory() {
         player.advanceFactory();
         player.setCapital(0);
+        
         this.factory = player.getFactory();
         this.allOrders = factory.getOrders();
+        
         fillVisibleOrders();
+        
         for (int i = 0; i < assemblyLines.size(); i++) {
             assemblyLines.getElement(i).reset();
         }

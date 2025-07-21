@@ -81,10 +81,6 @@ public class Factory {
         return list;
     }
 
-    public void refillBelt() {
-        materialGenerator.refill();
-    }
-
     public Material consumeMaterial(int index) {
         return materialGenerator.consumeMaterial(index);
     }
