@@ -9,21 +9,22 @@ import javax.swing.SwingUtilities;
 import model.AssemblyLine;
 import model.Order;
 import model.Player;
+import model.enums.OrderStatus;
 import model.structure.linkedlist.LinkedList;
 
 public class HubPanel extends javax.swing.JPanel {
 
     private Player player;
-    // Controlador principal del juego
     private GameController controller;
-    // Panel de ensamblaje para refrescar la vista
     private AssemblyPanel assemblyPanel;
+    private ConveyorBeltPanel conveyorBeltPanel;
 
     // Constructor: inicializa todo el HUB, refresca info inicial y bloquea avanzar de fábrica
-    public HubPanel(Player player, GameController controller, AssemblyPanel assemblyPanel) {
+    public HubPanel(Player player, GameController controller, AssemblyPanel assemblyPanel, ConveyorBeltPanel conveyorBeltPanel) {
         this.player = player;
         this.controller = controller;
         this.assemblyPanel = assemblyPanel;
+        this.conveyorBeltPanel = conveyorBeltPanel;
         initComponents();
         updateHUB();
         updateOrdersDisplay();
@@ -34,18 +35,15 @@ public class HubPanel extends javax.swing.JPanel {
     public void updateHUB() {
         positionLabel.setText("Puesto: " + player.getPosition());
         factoryLabel.setText("Fábrica: " + player.getCurrentFactory());
-        moneyLabel.setText("Capital: $" + player.getMoney());
+        moneyLabel.setText("Capital: $" + player.getCapital());
         goalLabel.setText("Meta: $" + player.getFactory().getProfitGoal());
 
-        // Solo activa el botón si ya se llegó a la meta
-        if (player.getMoney() >= player.getFactory().getProfitGoal()) {
+        if (player.getCapital() >= player.getFactory().getProfitGoal()) {
             nextfactoryBtn.setEnabled(true);
             nextfactoryBtn.setBackground(new Color(111, 207, 151)); // verde
-            nextfactoryBtn.setText("¡Listo para avanzar!");
         } else {
             nextfactoryBtn.setEnabled(false);
             nextfactoryBtn.setBackground(new Color(180, 180, 180)); // gris
-            nextfactoryBtn.setText("Next Factory");
         }
     }
 
@@ -120,10 +118,9 @@ public class HubPanel extends javax.swing.JPanel {
             // Muestra el nombre del carro y el estado de la orden
             title.setText(order.getCar().getType().getCarName());
             progress.setText(order.getStatus().toString());
-            // Permite aceptar si la orden no está en progreso ni completada
-            accept.setEnabled(order.getStatus() == model.enums.OrderStatus.NOT_ACCEPTED);
-            // Permite rechazar si la orden no está completada
-            reject.setEnabled(order.getStatus() != model.enums.OrderStatus.COMPLETED);
+
+            accept.setEnabled(order.getStatus() == OrderStatus.NOT_ACCEPTED);
+            reject.setEnabled(order.getStatus() != OrderStatus.COMPLETED);
         }
     }
 
@@ -496,6 +493,7 @@ public class HubPanel extends javax.swing.JPanel {
 
         nextfactoryBtn.setText("Next Factory");
         nextfactoryBtn.setBorderPainted(false);
+        nextfactoryBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nextfactoryBtn.setFocusPainted(false);
         nextfactoryBtn.setFocusable(false);
         nextfactoryBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -595,32 +593,40 @@ public class HubPanel extends javax.swing.JPanel {
     private void nextfactoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextfactoryBtnActionPerformed
         int goal = player.getFactory().getProfitGoal();
 
-        // Calcula el "rival" como un puntaje aleatorio entre la meta y +20%
-        int rivalScore = goal + (int) (Math.random() * (goal * 0.2));
-        int myScore = player.getMoney();
+        int rivalScore = goal + (int) (Math.random() * (goal * 0.1));
+        int myScore = player.getCapital();
 
         String mensaje = "Tu resultado: $" + myScore + "\n"
                 + "Puntaje del rival: $" + rivalScore + "\n\n";
 
         if (myScore >= rivalScore) {
             // Si ganas, pasa a la siguiente fábrica y actualiza vistas
-            mensaje += "¡Ganaste! Pasas a la siguiente fábrica.";
+            mensaje += "Bieeen! Pasas a la siguiente fábrica.";
             JOptionPane.showMessageDialog(this, mensaje, "¡Felicidades!", JOptionPane.INFORMATION_MESSAGE);
+
             controller.startNewFactory();
+
             updateHUB();
             updateOrdersDisplay();
+
+            assemblyPanel.clearAllLists();
+            assemblyPanel.updateAllTitles();
+            assemblyPanel.disableAllAddButtons();
+            assemblyPanel.updateAssemblyLineBackgrounds();
+
+            conveyorBeltPanel.updateBelt();
+
             nextfactoryBtn.setEnabled(false);
             nextfactoryBtn.setBackground(new Color(180, 180, 180));
-            nextfactoryBtn.setText("Next Factory");
 
             // Si ya ganaste la última fábrica, mensaje de victoria
             if (player.getCurrentFactory() == 3 && player.hasWon()) {
-                JOptionPane.showMessageDialog(this, "¡Has completado todas las fábricas!\n¡Eres el gerente general supremo!", "¡Victoria!", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Has completado todas las fábricas!\nEres el gerente general supremo!", "¡Victoria!", JOptionPane.PLAIN_MESSAGE);
                 // Aquí podrías cerrar la ventana o reiniciar el juego
             }
         } else {
             // Si pierdes, mensaje y reinicio
-            mensaje += "¡Perdiste! Tienes que volver a empezar.";
+            mensaje += "Perdiste bro, así es la vida.";
             JOptionPane.showMessageDialog(this, mensaje, "Perdiste", JOptionPane.ERROR_MESSAGE);
 
             // Regresa a la ventana de inicio y cierra la actual
