@@ -94,7 +94,7 @@ public class Factory {
     }
 
     public int calculatePenalty(Material material) {
-        return (int) (material.getValue() * 0.3);
+        return (int) (material.getValue() * 0.6);
     }
 
     public LinkedList<Material> getTrashCan() {
