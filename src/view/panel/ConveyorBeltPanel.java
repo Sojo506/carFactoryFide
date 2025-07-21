@@ -78,13 +78,8 @@ public class ConveyorBeltPanel extends javax.swing.JPanel {
 
         for (int i = 0; i < belt.size(); i++) {
             if (belt.getElement(i) == material) {
-                // Elimina el material del slot i
-                belt.remove(i);
-                // Busca un material único (no repetido en la cinta)
                 Material nuevo = controller.getFactory().getMaterialGenerator().getUniqueRandomMaterial(belt);
-                // Inserta el nuevo en la misma posición
-                belt.add(i, nuevo);
-                // Refresca solo ese botón visualmente
+                belt.setElement(i, nuevo);
                 updateMaterialButton(i);
                 break;
             }
@@ -135,7 +130,7 @@ public class ConveyorBeltPanel extends javax.swing.JPanel {
      */
     public void discardSelectedMaterial() {
         if (selectedMaterial != -1) {
-            controller.discardMaterial(selectedMaterial); // Penaliza y cambia material en modelo
+            controller.discardMaterial(selectedMaterial); // Penaliza y cambia material en modelo 
             updateMaterialButton(selectedMaterial); // Solo refresca el botón afectado
             assemblyPanel.disableAllAddButtons(); // Desactiva agregar hasta nueva selección
             selectedMaterial = -1;
