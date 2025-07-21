@@ -140,7 +140,6 @@ public class GameController {
         if (line != null && line.isOccupied()) {
             if (line.getOrder().getCar().canAcceptMaterial(material)) {
                 line.addMaterial(material);
-                removeMaterialFromBelt(material); // Elimina el material usado de la cinta
 
                 // Si el auto está completo, marca la orden y suma profit
                 if (line.getOrder().getCar().isComplete()) {
@@ -153,21 +152,7 @@ public class GameController {
         }
         return false; // Material no válido para ese auto/orden
     }
-
-    /**
-     * Elimina un material específico de la cinta, buscándolo por referencia.
-     * Esto asegura que la cinta nunca tenga duplicados después de actualizar.
-     */
-    public void removeMaterialFromBelt(Material material) {
-        LinkedList<Material> belt = getConveyorBelt();
-        for (int i = 0; i < belt.size(); i++) {
-            if (belt.getElement(i) == material) {
-                belt.remove(i);
-                break;
-            }
-        }
-    }
-
+    
     /**
      * Descarta un material (botón basurero): penaliza al jugador, elimina el
      * material, y coloca uno nuevo en esa posición (que no se repita en la
