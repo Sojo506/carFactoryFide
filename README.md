@@ -113,7 +113,7 @@ java -cp build app.Main
 ## 🤔 How It Works
 
 - Players start the game from the `StartGameView`.
-- Use drag-and-drop panels to move materials to the assembly line.
+- Use materials from ConbeyorBeltPanel to use them to the assembly line.
 - Complete orders shown in the UI before the timer runs out.
 - The `GameController` manages game flow, scoring, and events.
 - All progress is lost when the game closes (no DB or save).
