@@ -124,6 +124,24 @@ public class HubPanel extends javax.swing.JPanel {
         }
     }
 
+    public void canIStillWin() {
+        String aux = controller.canITryIt();
+
+        if (!aux.equals("1")) {
+            JOptionPane.showMessageDialog(this, aux, "Perdiste", JOptionPane.ERROR_MESSAGE);
+
+            startAgain();
+        }
+    }
+
+    private void startAgain() {
+        java.awt.EventQueue.invokeLater(() -> {
+            new view.StartGameView().setVisible(true);
+        });
+
+        SwingUtilities.getWindowAncestor(this).dispose();
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -552,42 +570,52 @@ public class HubPanel extends javax.swing.JPanel {
 
     private void rejectBtn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rejectBtn0ActionPerformed
         onRejectOrder(0);
+        canIStillWin();
     }//GEN-LAST:event_rejectBtn0ActionPerformed
 
     private void acceptBtn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptBtn0ActionPerformed
         onAcceptOrder(0);
+        canIStillWin();
     }//GEN-LAST:event_acceptBtn0ActionPerformed
 
     private void rejectBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rejectBtn1ActionPerformed
         onRejectOrder(1);
+        canIStillWin();
     }//GEN-LAST:event_rejectBtn1ActionPerformed
 
     private void acceptBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptBtn1ActionPerformed
         onAcceptOrder(1);
+        canIStillWin();
     }//GEN-LAST:event_acceptBtn1ActionPerformed
 
     private void rejectBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rejectBtn2ActionPerformed
         onRejectOrder(2);
+        canIStillWin();
     }//GEN-LAST:event_rejectBtn2ActionPerformed
 
     private void acceptBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptBtn2ActionPerformed
         onAcceptOrder(2);
+        canIStillWin();
     }//GEN-LAST:event_acceptBtn2ActionPerformed
 
     private void rejectBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rejectBtn3ActionPerformed
         onRejectOrder(3);
+        canIStillWin();
     }//GEN-LAST:event_rejectBtn3ActionPerformed
 
     private void acceptBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptBtn3ActionPerformed
         onAcceptOrder(3);
+        canIStillWin();
     }//GEN-LAST:event_acceptBtn3ActionPerformed
 
     private void rejectBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rejectBtn4ActionPerformed
         onRejectOrder(4);
+        canIStillWin();
     }//GEN-LAST:event_rejectBtn4ActionPerformed
 
     private void acceptBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptBtn4ActionPerformed
         onAcceptOrder(4);
+        canIStillWin();
     }//GEN-LAST:event_acceptBtn4ActionPerformed
 
     private void nextfactoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextfactoryBtnActionPerformed
@@ -630,11 +658,7 @@ public class HubPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, mensaje, "Perdiste", JOptionPane.ERROR_MESSAGE);
 
             // Regresa a la ventana de inicio y cierra la actual
-            java.awt.EventQueue.invokeLater(() -> {
-                new view.StartGameView().setVisible(true);
-            });
-
-            SwingUtilities.getWindowAncestor(this).dispose();
+            startAgain();
         }
 
     }//GEN-LAST:event_nextfactoryBtnActionPerformed
