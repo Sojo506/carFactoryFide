@@ -201,11 +201,13 @@ public class AssemblyPanel extends javax.swing.JPanel {
 
                     // Muestra mensaje al usuario por completar la orden
                     JOptionPane.showMessageDialog(this,
-                            "Linda! Completaste la orden:\n"
+                            "Nice! Completaste la orden:\n"
                             + completedOrder.getCar().getType().getCarName(),
                             "Orden completada",
                             JOptionPane.INFORMATION_MESSAGE
                     );
+                    
+                    hubPanel.canIStillWin();
                 }
 
                 // Limpia el estado de selección de material y deshabilita botones de agregar
