@@ -10,7 +10,7 @@ import model.structure.linkedlist.LinkedList;
  * de materiales, y realiza todas las operaciones críticas del juego.
  */
 public class GameController {
-    
+
     private Player player;
     private Factory factory;                // Fábrica actual del jugador
     private LinkedList<Order> allOrders;    // Todas las órdenes de la fábrica actual
@@ -34,7 +34,7 @@ public class GameController {
         for (int i = 0; i < maxAssemblyLines; i++) {
             assemblyLines.add(new AssemblyLine());
         }
-        
+
         fillVisibleOrders(); // Carga las primeras 5 órdenes en pantalla
     }
 
@@ -152,7 +152,7 @@ public class GameController {
         }
         return false; // Material no válido para ese auto/orden
     }
-    
+
     /**
      * Descarta un material (botón basurero): penaliza al jugador, elimina el
      * material, y coloca uno nuevo en esa posición (que no se repita en la
@@ -161,7 +161,7 @@ public class GameController {
     public void discardMaterial(int index) {
         LinkedList<Material> belt = getConveyorBelt();
         Material mat = belt.getElement(index);
-        
+
         if (mat != null) {
             factory.discardMaterial(mat); // Aplica penalización y lógica de eliminación
             player.subtractCapital(factory.calculatePenalty(mat)); // Descuenta el capital
@@ -177,15 +177,15 @@ public class GameController {
     public int getPlayerMoney() {
         return player.getCapital();
     }
-    
+
     public int getPlayerGoal() {
         return factory.getProfitGoal();
     }
-    
+
     public int getFactoryNumber() {
         return factory.getNumber();
     }
-    
+
     public String getPlayerPosition() {
         return player.getPosition();
     }
@@ -194,23 +194,51 @@ public class GameController {
     public LinkedList<AssemblyLine> getAssemblyLines() {
         return assemblyLines;
     }
-    
+
     public LinkedList<Order> getVisibleOrders() {
         return visibleOrders;
     }
-    
+
     public Player getPlayer() {
         return player;
     }
-    
+
     public Factory getFactory() {
         return factory;
     }
-    
+
+    public String canITryIt() {
+        int goal = factory.getProfitGoal();
+        int playerScore = player.getCapital();
+        int sumRemainingOrders = 0;
+
+        for (int i = 0; i < maxVisibleOrders; i++) {
+            Order order = visibleOrders.getElement(i);
+            if (order != null && !order.isCompleted()) {
+                sumRemainingOrders += order.getCar().getProfit();
+            }
+        }
+
+        for (int i = 0; i < allOrders.size(); i++) {
+            sumRemainingOrders += allOrders.getElement(i).getCar().getProfit();
+        }
+
+        if (playerScore + sumRemainingOrders >= goal) {
+            return "1";
+        } else {
+            String mensaje = "Tu resultado: $" + player.getCapital() + "\n";
+            mensaje += "Máximo posible con lo que queda: $" + (player.getCapital() + sumRemainingOrders) + "\n";
+            mensaje += "Meta: $" + player.getFactory().getProfitGoal() + "\n\n";
+            mensaje += "Ya no es posible alcanzar la meta, bro. Así es la vida.";
+
+            return mensaje;
+        }
+    }
+
     public int getSelectedMaterial() {
         return selectedMaterial;
     }
-    
+
     public void setSelectedMaterial(int selectedMaterial) {
         this.selectedMaterial = selectedMaterial;
     }
@@ -223,12 +251,12 @@ public class GameController {
     public void startNewFactory() {
         player.advanceFactory();
         player.setCapital(0);
-        
+
         this.factory = player.getFactory();
         this.allOrders = factory.getOrders();
-        
+
         fillVisibleOrders();
-        
+
         for (int i = 0; i < assemblyLines.size(); i++) {
             assemblyLines.getElement(i).reset();
         }
